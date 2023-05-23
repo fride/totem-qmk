@@ -1,0 +1,6 @@
+[submodule "qmk_firmware"]
+	path = qmk_firmware
+	url = https://github.com/qmk/qmk_firmware
+[submodule "qmk-config-totem"]
+	path = qmk-config-totem
+	url = git@github.com:GEIGEIGEIST/qmk-config-totem.git
