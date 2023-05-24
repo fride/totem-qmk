@@ -6,8 +6,7 @@ enum layers {
     _ALPHA,
     _NAV,
     _NUM,
-    _SYM1,
-    _SYM2,
+    _SYM,
     _MODS,
     _FUN,
 };
@@ -41,6 +40,10 @@ enum custom_keycodes {
   CANCEL, // Cancel SYMWORD and NUMWORD
   CLEAR,  // Clear all WORD, one-shots and reset to BASE
   MG_THE,
+  MG_ION,
+  MG_ENT,
+  MG_UST,
+  MG_MENT,
 
   // N-Shot Mods
   OS_LSFT, // OS Mods
@@ -64,10 +67,6 @@ enum custom_keycodes {
   SP_SFT,
   CPYPASTE,
 
-  NUM_G,
-  VIM_COLON,
-  VIM_SAFE,
-
   SW_APP,
   SW_WIN,
   MOUSE_TGL,
@@ -86,8 +85,16 @@ enum custom_keycodes {
 
 #define HOME_N KC_N
 #define HOME_E KC_E
-#define HOME_A KC_A
+#define HOME_A LT(_NUM,KC_A)
 #define HOME_I KC_I
+
+ #define MY_G LGUI_T(KC_G)
+ #define MY_J LALT_T(KC_J)     
+ #define MY_K LCTL_T(KC_K)
+
+#define MY_H     RGUI_T(KC_H)
+#define MY_QUOT  RALT_T(KC_QUOT)
+#define MY_SCLN  RCTL_T(KC_SCLN)
 
 // Semantic Keys
 #define FWD G(KC_RBRC)
@@ -97,18 +104,7 @@ enum custom_keycodes {
 #define SPACE_L A(G(KC_LEFT))
 #define SPACE_R A(G(KC_RGHT))
 
-
-#define HOME_R LT(_NUM, KC_R)
-
-#define HOME_T LT(_NAV, KC_T)
-#define HOME_N LT(_SYM1, KC_N)
-#define HOME_S LT(_SYM1, KC_S)
-#define HOME_C LT(_NUM, KC_C)
-
-
-#define HOME_A LT(_NAV,KC_A)
-#define HOME_E LT(_SYM1, KC_E)
-#define HOME_I LT(_SYM1, KC_I)
-#define HOME_H LT(_NUM,KC_H)
-
 #define EURO S(A(KC_2))
+
+#define COLON_SYMB LT(_SYM, KC_COLON)
+#define ESC_SYMB LT(_SYM, KC_ESC)

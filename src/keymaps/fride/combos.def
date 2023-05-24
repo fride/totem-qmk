@@ -1,9 +1,0 @@
-// COMB( combo_caps,   CAPSWORD, KC_T,    KC_A)
-COMB( combo_canel,  CANCEL,   HOME_A, HOME_I)
-COMB( combo_enter,  KC_ENTER, HOME_N, HOME_E, HOME_A)
-COMB( COMBO_ESC,    KC_ESC, HOME_R, HOME_D)
-COMB( combo_tab,    KC_TAB,   HOME_T, HOME_R, HOME_D)
-
-// COMB(combo_numword,   NUMWORD,  KC_R, SPACE)
-
-COMB(CMB_BOOT, QK_BOOT, KC_V, KC_COMM)
