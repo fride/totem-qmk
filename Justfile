@@ -1,3 +1,6 @@
+build: clean
+    DOCKER_BUILDKIT=1 docker buildx build -o type=local,dest=result . 
+
 fetch_totem_src:
     git submodule add -f git@github.com:GEIGEIGEIST/qmk-config-totem.git
     git submodule sync
@@ -11,9 +14,6 @@ fetch_qmk:
     git submodule update --init --recursive --progress
     ( cd qmk_firmware && git checkout "master" )
 
-totem: clean
-    DOCKER_BUILDKIT=1 docker buildx build -o type=local,dest=result . 
-    
 flash: 
     cp result/result/totem_fride.uf2 /Volumes/RPI-RP2/
 

@@ -44,18 +44,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                  │  CTRL   │  LOWER  │  SPACE  ││  ENTER  │  RAISE  │  BSPC   │
                                  └─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┘*/
 
- //  [_ALPHA] = LAYOUT(
-//  //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
-//               KC_X,     KC_W,     KC_M,     KC_G,     KC_J,      KC_HASH,  KC_DOT,   KC_QUOT,  KC_SLSH,  KC_COMM,
-//               KC_S,     KC_C,     KC_N,     KC_T,     KC_K,      KC_COMM,  KC_A,     KC_E,     KC_I,     HOME_H,
-//     KC_Q,     KC_F,     KC_P,     KC_L,     KC_D,     KC_V,      KC_MINS,  KC_U,     KC_O,     KC_Y,     KC_B,     KC_MINS,
-//                         REPEAT,             SPACE, KC_MEH,      KC_MEH,  LT(_NUM,KC_R),   REPEAT
-//  ),
-   [_ALPHA] = LAYOUT(
+  [_ALPHA2] = LAYOUT(
  //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
+              KC_V,     KC_M,     KC_L,     KC_P,     KC_P,      KC_B,     MAGIC,    KC_U,     KC_O,     KC_COMM,
+              HOME_S,   HOME_T,   HOME_R,   HOME_D,   KC_Y,      KC_F,     KC_F ,    HOME_E,   HOME_A,   HOME_I,
+    KC_NO,    KC_X,     MY_K,     MY_J,     KC_W,     KC_W,      KC_Z,     KC_B,     MY_QUOT,  MY_SCLN,  KC_DOT,    KC_NO,
+                                  REPEAT,   SPACE,    KC_MEH,    KC_MEH,   REPEAT,   OS_LSFT
+ ),
+   [_ALPHA] = LAYOUT(
+//  //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
+//               KC_NO,    KC_NO,    KC_W,     MAGIC,    KC_NO,     KC_NO,    MAGIC,    KC_QUOT,  KC_O,     KC_COMM,
+//               HOME_I,   HOME_S,   HOME_R,   HOME_T ,  KC_NO,     KC_NO,    HOME_N,   HOME_E,   HOME_A,   HOME_C,
+//     KC_NO,    KC_NO,    HOME_L,   HOME_G,   HOME_D,   KC_NO,     KC_NO,    HOME_H,   HOME_U,   HOME_O,   KC_NO,    KC_NO,
+//                                   REPEAT,   LSFT_T(KC_SPC),  KC_MEH,    KC_MEH,   OSL(_ALPHA2),   REPEAT
+
+//╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
               KC_V,     KC_M,     KC_L,     KC_C,     KC_P,      KC_B,     MAGIC,    KC_U,     KC_O,     KC_COMM,
               HOME_S,   HOME_T,   HOME_R,   HOME_D,   KC_Y,      KC_F,     HOME_N ,  HOME_E,   HOME_A,   HOME_I,
-    KC_Q,     KC_X,     KC_K,     KC_J,     KC_G,     KC_W,      KC_Z,     KC_H,     KC_QUOT,  KC_SCLN,  KC_DOT,    KC_MINS,
+    KC_Q,     KC_X,     MY_K,     MY_J,     MY_G,     KC_W,      KC_Z,     MY_H,     MY_QUOT,  MY_SCLN,  KC_DOT,    KC_NO,
                                   REPEAT,   SPACE,    KC_MEH,    KC_MEH,   REPEAT,   OS_LSFT
  ),
 
@@ -68,16 +74,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [_NUM] = LAYOUT(
 //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷    
-             KC_LBRC,  KC_7,     KC_8,     KC_9,     KC_RBRC,   KC_NO,   KC_2,      KC_3,     KC_4,    KC_NO,
-             KC_7,     KC_4,     KC_5,     KC_6,     KC_NO,     KC_NO,   OS_LGUI,   OS_LALT, KC_NO  ,  OS_LSFT,
-    KC_NO,   KC_1 ,    KC_1,     KC_2,     KC_3,     KC_NO,     KC_NO,   KC_0,      KC_NO,   KC_NO,    KC_NO,     KC_NO,
-                                 KC_NO,    KC_0,     KC_LCTL,   KC_MEH,  OS_LSFT,   KC_NO 
+             KC_NO,    KC_PLUS,  KC_6,     KC_7,     KC_NO,     KC_NO,   KC_8,      KC_9,     KC_0,    KC_NO,
+             KC_PAST,  KC_MINS,  KC_1,     KC_2,     KC_NO,     KC_NO,   KC_3,      KC_4,     KC_5,    KC_EQL,
+    KC_NO,   KC_NO,    KC_NO,    KC_NO,    KC_9,     KC_NO,     KC_NO,   KC_0,      KC_NO,   KC_NO,    KC_NO,     KC_NO,
+                                 KC_NO,    SPACE,    KC_MEH,    KC_MEH,  REPEAT,   OS_LSFT 
   ),
 
   [_SYM] = LAYOUT(
-    KC_NO,    KC_DOT,  KC_0,     KC_1,    KC_NO,            KC_NO,   KC_2,       KC_3,      KC_4,      KC_NO,
-    KC_7,     KC_5,    KC_3,     KC_1,    KC_NO,            KC_NO,   OS_LGUI,    OS_LALT,      OS_LCTL,      OS_LSFT,
-    KC_NO, KC_NO,    KC_NO, KC_NO,  KC_9,    KC_NO,         KC_NO,   KC_0,       KC_NO,   KC_NO,   KC_NO, KC_NO,
+//╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷        
+             KC_NO,    S(KC_1),  KC_AT,    KC_HASH,  KC_NO,            KC_NO,   KC_LBRC,      KC_3,      KC_4,      KC_NO,
+             KC_7,     KC_DLR,   KC_3,     KC_1,     KC_NO,            KC_NO,   KC_LPRN,      OS_LALT,      OS_LCTL,      OS_LSFT,
+    KC_NO,  KC_NO,     KC_NO,    KC_NO,    KC_9,     KC_NO,            KC_NO,   KC_LCBR,      KC_NO,   KC_NO,   KC_NO, KC_NO,
            KC_NO,                      KC_0,  KC_LCTL,          KC_MEH,  KC_SPC, KC_NO // need to check this out!?
   ),
 

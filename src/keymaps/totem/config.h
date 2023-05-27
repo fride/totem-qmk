@@ -11,13 +11,6 @@ for more options.
 //#define TAPPING_TERM 170
 #define TAPPING_TERM 170
 
-// Enable rapid switch from tap to hold, disables double tap hold auto-repeat.
-#define TAPPING_FORCE_HOLD
-
-// Auto Shift
-#define NO_AUTO_SHIFT_ALPHA
-#define AUTO_SHIFT_TIMEOUT TAPPING_TERM
-#define AUTO_SHIFT_NO_SETUP
 
 #undef LOCKING_SUPPORT_ENABLE
 #undef LOCKING_RESYNC_ENABLE
@@ -37,7 +30,7 @@ for more options.
 
 // Combos
 #undef COMBO_TERM
-#define COMBO_TERM 20
+#define COMBO_TERM 60
 #define COMBO_MUST_TAP_PER_COMBO
 #define COMBO_TERM_PER_COMBO
 // All combos are specified from the base layer, saves space and keeps me sane

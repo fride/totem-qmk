@@ -37,7 +37,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
     switch (keycode) {
     case KC_A:
       return KC_O;
-    case KC_N:
+    case HOME_N:
       return KC_F; // Fuenf!
     case KC_O:
       return KC_A;
@@ -47,17 +47,17 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
       return KC_K;
     case KC_E:
       return KC_U;
-    case KC_D:
+    case HOME_D:
       return KC_Y;
     case KC_P:
       return KC_Y;
     case KC_C:
       return KC_Y;
-    case KC_R:
+    case HOME_R:
       return KC_L;
     case KC_G:
       return KC_Y;
-    case KC_T:
+    case HOME_T:
       return MG_MENT;
     case KC_I:
       return MG_ION;
@@ -67,6 +67,8 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
       return MG_UST;
     case KC_EQL:
       return KC_GT;
+    case KC_LPRN:
+      return KC_RPRN;
     case KC_MINS:
       return KC_GT;
     case SPACE:
@@ -130,8 +132,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
   if (record->event.pressed) {
     switch (keycode) {
-      case CANCEL:
-       return false;
+      case CANCEL:  
+//     stop_leading();
+        layer_off(_NAV);
+        layer_off(_NUM);
+        layer_off(_SYM);
+        //disable_caps_word();
+        disable_num_word();
+        layer_move(_ALPHA);
+        return false;
       case NUMWORD:
         process_num_word_activation(record);
         return false;
@@ -139,6 +148,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       case COLON_SYMB: {
         if (record->tap.count > 0) {
           tap_code16(KC_COLON);
+          return false;
+        } else {
+          return true;
+        }         
+      }
+      case MAGIC: {
+        if (record->tap.count > 0) {
+          tap_code16(ALTREP);
           return false;
         } else {
           return true;

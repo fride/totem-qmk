@@ -4,6 +4,7 @@
 
 enum layers {
     _ALPHA,
+    _ALPHA2,
     _NAV,
     _NUM,
     _SYM,
@@ -41,6 +42,7 @@ enum custom_keycodes {
   CLEAR,  // Clear all WORD, one-shots and reset to BASE
   MG_THE,
   MG_ION,
+  MG_ON,
   MG_ENT,
   MG_UST,
   MG_MENT,
@@ -76,21 +78,42 @@ enum custom_keycodes {
 
   // The MAGIC NUMBER!
 #define MAGIC ALTREP
-#define SPACE LT(_NAV, KC_SPC)
+// #define SPACE LT(_NAV, KC_SPC)
+#define SPACE LSFT_T(KC_SPC)
+
+// #define HOME_I KC_I
+// #define HOME_S LT(_NUM,KC_S)
+// #define HOME_R LT(_SYM,KC_R)
+// #define HOME_T LT(_NAV,KC_T)
+// #define HOME_L LCTL_T(KC_L)
+// #define HOME_G LALT_T(KC_G)
+// #define HOME_D LGUI_T(KC_D)
+
+// #define HOME_N LT(_NAV,KC_N)
+// #define HOME_E LT(_SYM,KC_E)
+// #define HOME_A LT(_NUM,KC_A)
+// #define HOME_C KC_C
+// #define HOME_H LGUI_T(KC_H)
+// #define HOME_U LALT_T(KC_U)
+// #define HOME_O LCTL_T(KC_O)
+
+
+// #define THUMB_R_2 TO(_ALPHA)
 
 #define HOME_S KC_S
-#define HOME_T KC_T
-#define HOME_R KC_R
-#define HOME_D KC_D
+#define HOME_T LT(_NUM, KC_T)
+#define HOME_R LT(_SYM, KC_R)
+#define HOME_D LT(_NAV,KC_D)
 
-#define HOME_N KC_N
-#define HOME_E KC_E
+#define HOME_N LT(_NAV,KC_N)
+#define HOME_E LT(_SYM,KC_E)
 #define HOME_A LT(_NUM,KC_A)
 #define HOME_I KC_I
 
- #define MY_G LGUI_T(KC_G)
- #define MY_J LALT_T(KC_J)     
- #define MY_K LCTL_T(KC_K)
+
+#define MY_G LGUI_T(KC_G)
+#define MY_J LALT_T(KC_J)     
+#define MY_K LCTL_T(KC_K)
 
 #define MY_H     RGUI_T(KC_H)
 #define MY_QUOT  RALT_T(KC_QUOT)
