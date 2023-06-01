@@ -37,34 +37,46 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
     switch (keycode) {
     case KC_A:
       return KC_O;
-    case HOME_N:
-      return KC_F; // Fuenf!
-    case KC_O:
-      return KC_A;
-    case KC_U:
-      return KC_E;
-    case KC_S:
-      return KC_K;
-    case KC_E:
-      return KC_U;
-    case HOME_D:
-      return KC_Y;
-    case KC_P:
-      return KC_Y;
+    case KC_B:
+      return KC_N; // TODO BEFORE
     case KC_C:
       return KC_Y;
-    case HOME_R:
-      return KC_L;
+    case HOME_D:
+      return KC_Y;
+    case HOME_E:
+      return KC_U;
+    case KC_F:
+      return KC_N;
+    case HOME_N:
+      return KC_F; // Fuenf!
     case KC_G:
       return KC_Y;
-    case HOME_T:
-      return MG_MENT;
     case KC_I:
       return MG_ION;
-    case KC_M:
-      return MG_ENT;
     case KC_J:
       return MG_UST;
+    case KC_K:
+      return KC_S;
+    case KC_L:
+      return KC_K;
+    case KC_M:
+      return MG_ENT;
+    // N makes no sense!  
+    case KC_O:
+      return KC_A;
+    case KC_P:
+      return KC_Y;
+    case HOME_R:
+      return KC_L;    
+    case KC_S:
+      return KC_K;
+    case HOME_T:
+      return MG_MENT;
+    case KC_U:
+      return KC_E;
+    case KC_V:
+      return MG_VER;
+    //  
     case KC_EQL:
       return KC_GT;
     case KC_LPRN:
@@ -171,6 +183,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       }
       case MG_ION:
           SEND_STRING("on");
+          return false;
+      case MG_VER:
+          SEND_STRING("er");
           return false;
       case MG_UST:
           SEND_STRING("ust");

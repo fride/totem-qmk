@@ -2,14 +2,23 @@
 
 // cancel anymods and layers, please! The PANIC BUTTON!
 COMB( combo_canel,     CANCEL,   HOME_S, HOME_I)
+COMB( CMB_BOOT,        QK_BOOT,    KC_V, KC_COMM)
+COMB( CMB_Q,    KC_Q,       KC_V, KC_M)
+COMB( CMB_W,    KC_W,       KC_G, KC_W)
+COMB( CMB_TG_NAV,  TG(_NAV),   MAGIC, KC_U, KC_O)
+COMB( CMB_TG_NUM,  TG(_NUM),   KC_M, KC_L, KC_C)
+
+COMB (CMB_LCTRL,    OS_LCTL,    HOME_T, HOME_R)
+COMB (CMB_RCTRL,    OS_LCTL,    HOME_E, HOME_A)
+
+
 
 
 COMB( combo_enter,     KC_ENTER,   HOME_N, HOME_E, HOME_A)
 COMB( COMBO_ESC,       KC_ESC,     HOME_R, HOME_D)
 COMB( combo_tab,       KC_TAB,     HOME_T, HOME_R, HOME_D)
-COMB( combo_numword,   NUMWORD,    KC_M, KC_L, KC_C)
-COMB( CMB_NAV,         TG(_NAV),   MAGIC, KC_U, KC_O)
-COMB( CMB_BOOT,        QK_BOOT,    KC_V, KC_COMM)
+// COMB( combo_numword,   NUMWORD,    KC_M, KC_L, KC_C)
+
 
 COMB( CMB_EQL,   KC_EQL,            MAGIC, KC_O)
 COMB( CMB_MINS,  KC_MINS,           KC_M, KC_C)

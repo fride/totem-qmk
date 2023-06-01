@@ -30,7 +30,7 @@ for more options.
 
 // Combos
 #undef COMBO_TERM
-#define COMBO_TERM 60
+#define COMBO_TERM 35
 #define COMBO_MUST_TAP_PER_COMBO
 #define COMBO_TERM_PER_COMBO
 // All combos are specified from the base layer, saves space and keeps me sane

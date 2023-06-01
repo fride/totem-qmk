@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "*.tw": "tiddlywiki5",
+        "*.tw5": "tiddlywiki5",
+        "*.tid": "tid",
+        "*.meta": "tid",
+        "*.multids": "multids",
+        "nshot_mod.h": "c",
+        "swapper.h": "c"
+    },
+    "cmake.sourceDirectory": "/Users/jgf/code/private/totem-qmk/qmk_firmware/lib/googletest"
+}

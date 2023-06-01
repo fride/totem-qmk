@@ -46,6 +46,7 @@ enum custom_keycodes {
   MG_ENT,
   MG_UST,
   MG_MENT,
+  MG_VER,
 
   // N-Shot Mods
   OS_LSFT, // OS Mods
@@ -78,46 +79,45 @@ enum custom_keycodes {
 
   // The MAGIC NUMBER!
 #define MAGIC ALTREP
-// #define SPACE LT(_NAV, KC_SPC)
-#define SPACE LSFT_T(KC_SPC)
+#define SPACE LT(_NAV, KC_SPC)
 
-// #define HOME_I KC_I
-// #define HOME_S LT(_NUM,KC_S)
-// #define HOME_R LT(_SYM,KC_R)
-// #define HOME_T LT(_NAV,KC_T)
-// #define HOME_L LCTL_T(KC_L)
-// #define HOME_G LALT_T(KC_G)
-// #define HOME_D LGUI_T(KC_D)
+#define HOME_S KC_S
+#define HOME_T KC_T
+#define HOME_R KC_R
+#define HOME_D KC_D
+
+#define HOME_N KC_N
+#define HOME_E KC_E
+#define HOME_A KC_A
+#define HOME_I KC_I
+
+
+#define MY_G KC_G
+#define MY_J KC_J     
+#define MY_K KC_K
+
+#define MY_H     KC_H 
+#define MY_QUOT  KC_QUOT
+#define MY_SCLN  KC_SCLN
+
+// #define HOME_S KC_S
+// #define HOME_T LT(_NUM, KC_T)
+// #define HOME_R LT(_SYM, KC_R)
+// #define HOME_D LT(_NAV,KC_D)
 
 // #define HOME_N LT(_NAV,KC_N)
 // #define HOME_E LT(_SYM,KC_E)
 // #define HOME_A LT(_NUM,KC_A)
-// #define HOME_C KC_C
-// #define HOME_H LGUI_T(KC_H)
-// #define HOME_U LALT_T(KC_U)
-// #define HOME_O LCTL_T(KC_O)
+// #define HOME_I KC_I
 
 
-// #define THUMB_R_2 TO(_ALPHA)
+// #define MY_G LGUI_T(KC_G)
+// #define MY_J LALT_T(KC_J)     
+// #define MY_K LCTL_T(KC_K)
 
-#define HOME_S KC_S
-#define HOME_T LT(_NUM, KC_T)
-#define HOME_R LT(_SYM, KC_R)
-#define HOME_D LT(_NAV,KC_D)
-
-#define HOME_N LT(_NAV,KC_N)
-#define HOME_E LT(_SYM,KC_E)
-#define HOME_A LT(_NUM,KC_A)
-#define HOME_I KC_I
-
-
-#define MY_G LGUI_T(KC_G)
-#define MY_J LALT_T(KC_J)     
-#define MY_K LCTL_T(KC_K)
-
-#define MY_H     RGUI_T(KC_H)
-#define MY_QUOT  RALT_T(KC_QUOT)
-#define MY_SCLN  RCTL_T(KC_SCLN)
+// #define MY_H     RGUI_T(KC_H)
+// #define MY_QUOT  RALT_T(KC_QUOT)
+// #define MY_SCLN  RCTL_T(KC_SCLN)
 
 // Semantic Keys
 #define FWD G(KC_RBRC)
