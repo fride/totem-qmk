@@ -4,12 +4,11 @@
 
 enum layers {
     _ALPHA,
-    _ALPHA2,
-    _NAV,
     _NUM,
     _SYM,
     _MODS,
     _FUN,
+    _NAV
 };
 
 
@@ -79,6 +78,8 @@ enum custom_keycodes {
 
   // The MAGIC NUMBER!
 #define MAGIC ALTREP
+#define REPEAT_SYM LT(_SYM, REPEAT)
+
 #define SPACE LT(_NAV, KC_SPC)
 
 #define HOME_S KC_S
@@ -129,5 +130,5 @@ enum custom_keycodes {
 
 #define EURO S(A(KC_2))
 
-#define COLON_SYMB LT(_SYM, KC_COLON)
-#define ESC_SYMB LT(_SYM, KC_ESC)
+#define COLON_SYM LT(_SYM, KC_COLON)
+#define ESC_SYM LT(_SYM, KC_ESC)

@@ -8,19 +8,17 @@ for more options.
 #define MASTER_LEFT
 // #define MASTER_RIGHT
 
-//#define TAPPING_TERM 170
-#define TAPPING_TERM 170
+#define IGNORE_MOD_TAP_INTERRUPT    // Lets you roll mod-tap keys
+#define TAPPING_FORCE_HOLD          // Allows mod use immediately after tap use
+#define TAPPING_FORCE_HOLD_PER_KEY  // BUT NOT EVERYWHERE.
+#define TAPPING_TERM 200            // Base tapping term
+#define TAPPING_TERM_PER_KEY        // Adjust tapping term for finger strength
 
 
 #undef LOCKING_SUPPORT_ENABLE
 #undef LOCKING_RESYNC_ENABLE
 
-// Prevent normal rollover on alphas from accidentally triggering mods.
-#define IGNORE_MOD_TAP_INTERRUPT
-// Enable rapid switch from tap to hold, disables double tap hold auto-repeat.
-#define TAPPING_FORCE_HOLD
-// Apply the modifier on keys that are tapped during a short hold of a modtap
-#define PERMISSIVE_HOLD
+
 
 // Immediately turn on layer if key is pressed quickly
 // this cancels IGNORE_MOD_TAP_INTERRUPT.
