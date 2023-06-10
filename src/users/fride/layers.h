@@ -1,39 +1,56 @@
-#define STURDY_00 KC_V
-#define STURDY_01 KC_M 
-#define STURDY_02 KC_L 
-#define STURDY_03 KC_C 
-#define STURDY_04 KC_P 
-#define STURDY_05 KC_B 
-#define STURDY_06 MAGIC 
-#define STURDY_07 KC_U 
-#define STURDY_08 KC_O 
-#define STURDY_09 KC_QUOT 
-#define STURDY_10 KC_S 
-#define STURDY_11 KC_T 
-#define STURDY_12 KC_R 
-#define STURDY_13 LT(_NAV,KC_D)
-#define STURDY_14 KC_Y 
-#define STURDY_15 KC_F 
-#define STURDY_16 LT(_NAV,KC_N)
-#define STURDY_17 KC_E 
-#define STURDY_18 KC_A 
-#define STURDY_19 KC_I 
-#define STURDY_20 KC_X 
-#define STURDY_21 LCTL_T(KC_K)
-#define STURDY_22 LALT_T(KC_J)
-#define STURDY_23 LGUI_T(KC_G)
-#define STURDY_24 KC_W 
-#define STURDY_25 KC_Z 
-#define STURDY_26 RGUI_T(MY_H)
-#define STURDY_27 RALT_T(KC_COMM)
-#define STURDY_28 RCTL_T(KC_DOT)
-#define STURDY_29 KC_UNDS  
-#define STURDY_30 OS_LSFT 
-#define STURDY_31 LSFT_T(KC_SPACE) 
-#define STURDY_32 KC_MEH 
-#define STURDY_33 REPEAT 
-#define STURDY_34 REPEAT 
-#define STURDY_35 OS_LSFT
+// Layers
+// https://github.com/Ikcelaks/keyboard_layouts/blob/main/magic_sturdy/magic_sturdy.md
+#define ALPHA_00 KC_V
+#define ALPHA_01 KC_M 
+#define ALPHA_02 KC_L 
+#define ALPHA_03 KC_C 
+#define ALPHA_04 KC_P 
+#define ALPHA_05 KC_B 
+#define ALPHA_06 MAGIC 
+#define ALPHA_07 KC_U 
+#define ALPHA_08 KC_O 
+#define ALPHA_09 KC_QUOT 
+#define ALPHA_10 LT(_NUM,KC_S)
+// LT(_SYM,KC_T)
+#define ALPHA_11 KC_T 
+
+//LT(_SYM, KC_R) LT(_SYM, KC_R) 
+#define ALPHA_12 KC_R 
+//LT(_NAV,KC_D)
+#define ALPHA_13 KC_D
+#define ALPHA_14 KC_Y 
+#define ALPHA_15 KC_F 
+//#define ALPHA_16 LT(_NAV,KC_N)
+#define ALPHA_16 KC_N
+//#define ALPHA_17 LT(_SYM,KC_E) 
+#define ALPHA_17 KC_E
+// #define ALPHA_18 LT(_SYM,KC_A)
+#define ALPHA_18 KC_A
+//#define ALPHA_19 LT(_NUM,KC_I)
+#define ALPHA_19 KC_I 
+#define ALPHA_20 KC_X 
+//#define ALPHA_21 LCTL_T(KC_K)
+#define ALPHA_21 KC_K 
+//#define ALPHA_22 LALT_T(KC_J)
+#define ALPHA_22 KC_J
+//#define ALPHA_23 LGUI_T(KC_G)
+#define ALPHA_23 KC_G
+#define ALPHA_24 KC_W 
+#define ALPHA_25 KC_Z 
+//#define ALPHA_26 RGUI_T(KC_H)
+#define ALPHA_26 KC_H
+// #define ALPHA_27 RALT_T(KC_COMM)
+#define ALPHA_27 KC_COMM
+//#define ALPHA_28 RCTL_T(KC_DOT)
+#define ALPHA_28 KC_DOT
+#define ALPHA_29 KC_UNDS 
+
+#define ALPHA_30 KC_NO
+#define ALPHA_31 LT(_NAV,KC_SPACE) 
+#define ALPHA_32 KC_MEH
+#define ALPHA_33 OS_LSFT 
+#define ALPHA_34 REPEAT
+#define ALPHA_35 KC_NO
 
 
 #define NAV_00 SW_APP 
@@ -59,10 +76,42 @@
 #define NAV_20 KC_NO 
 #define NAV_21 KC_NO 
 #define NAV_22 KC_NO 
-#define NAV_23 KC_NO 
-#define NAV_24 KC_NO 
+#define NAV_23 CPYPASTE 
+#define NAV_24 ALFRED 
 #define NAV_25 KC_NO 
 #define NAV_26 KC_NO 
 #define NAV_27 KC_NO 
 #define NAV_28 KC_NO 
-#define NAV_29 CPYPASTE 
+#define NAV_29 KC_NO 
+
+
+#define NUM_00 KC_NO
+#define NUM_01 KC_NO 
+#define NUM_02 KC_NO 
+#define NUM_03 KC_9
+#define NUM_04 KC_NO 
+#define NUM_05 KC_NO 
+#define NUM_06 KC_0
+#define NUM_07 KC_NO 
+#define NUM_08 KC_NO 
+#define NUM_09 KC_NO 
+#define NUM_10 KC_7 
+#define NUM_11 KC_5
+#define NUM_12 KC_3
+#define NUM_13 KC_1
+#define NUM_14 KC_NO
+#define NUM_15 KC_NO
+#define NUM_16 KC_2
+#define NUM_17 KC_4
+#define NUM_18 KC_6
+#define NUM_19 KC_8
+#define NUM_20 KC_NO 
+#define NUM_21 KC_NO 
+#define NUM_22 KC_NO 
+#define NUM_23 KC_9 
+#define NUM_24 KC_NO 
+#define NUM_25 KC_NO 
+#define NUM_26 KC_0
+#define NUM_27 KC_COMM 
+#define NUM_28 KC_DOT 
+#define NUM_29 KC_UNDS

@@ -15,9 +15,10 @@
 #include <stdio.h>
 #include "totem.h"
 #include "keycodes.h"
+#include "layers.h"
 #include "g/keymap_combo.h"
 #include "features/tap_hold.h"
-#include "layers.h"
+
 // ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 // │ D E F I N I T I O N S                                                                                                  │
 // └────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
@@ -46,32 +47,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                  └─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┘*/
 
    [_ALPHA] = LAYOUT(
-           STURDY_00, STURDY_01,STURDY_02, STURDY_03, STURDY_04,   STURDY_05, STURDY_06, STURDY_07, STURDY_08, STURDY_09,
-           STURDY_10, STURDY_11,STURDY_12, STURDY_13, STURDY_14,   STURDY_15, STURDY_16, STURDY_17, STURDY_18, STURDY_19,
-    KC_NO, STURDY_20, STURDY_21,STURDY_22, STURDY_23, STURDY_24,   STURDY_25, STURDY_26, STURDY_27, STURDY_28, STURDY_29, KC_NO,
-                                STURDY_30, STURDY_31, STURDY_32,   STURDY_33, STURDY_34, STURDY_35
+           ALPHA_00, ALPHA_01,ALPHA_02, ALPHA_03, ALPHA_04,   ALPHA_05, ALPHA_06, ALPHA_07, ALPHA_08, ALPHA_09,
+           ALPHA_10, ALPHA_11,ALPHA_12, ALPHA_13, ALPHA_14,   ALPHA_15, ALPHA_16, ALPHA_17, ALPHA_18, ALPHA_19,
+    KC_NO, ALPHA_20, ALPHA_21,ALPHA_22, ALPHA_23, ALPHA_24,   ALPHA_25, ALPHA_26, ALPHA_27, ALPHA_28, ALPHA_29,     KC_NO,
+                              ALPHA_30, ALPHA_31, ALPHA_32,   ALPHA_33, ALPHA_34, ALPHA_35
  ),
-
    [_NAV] = LAYOUT(
            NAV_00,    NAV_01,   NAV_02,    NAV_03,    NAV_04,      NAV_05,    NAV_06,    NAV_07,    NAV_08,    NAV_09,   
            NAV_10,    NAV_11,   NAV_12,    NAV_13,    NAV_14,      NAV_15,    NAV_16,    NAV_17,    NAV_18,    NAV_19,   
     KC_NO, NAV_20,    NAV_21,   NAV_22,    NAV_23,    NAV_24,      NAV_25,    NAV_26,    NAV_27,    NAV_28,    NAV_29,    KC_NO,
-                                STURDY_30, STURDY_31, STURDY_32,   STURDY_33, STURDY_34, STURDY_35
+                                ALPHA_30, ALPHA_31, ALPHA_32,   ALPHA_33, ALPHA_34, ALPHA_35
   ),
   [_NUM] = LAYOUT(
-//╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷    
-             KC_GRV,   KC_TILDE, KC_NO,    KC_NO,    KC_NO,     KC_NO,   MAGIC,     KC_9,     KC_0,    KC_NO,
-             KC_0,     KC_1,     KC_2,     KC_3,     KC_NO,     KC_NO,   KC_2,      KC_4,     KC_6,    KC_8,
-    KC_NO,   KC_NO,    KC_4 ,    KC_5,     KC_6,     KC_NO,     KC_NO,   KC_0,      KC_COMM,  KC_DOT,    KC_NO,     KC_NO,
-                                 KC_NO,    SPACE,    KC_MEH,    OS_LSFT, CANCEL,    OS_LSFT 
+           NUM_00,    NUM_01,   NUM_02,    NUM_03,    NUM_04,      NUM_05,    NUM_06,    NUM_07,    NUM_08,    NUM_09,     
+           NUM_10,    NUM_11,   NUM_12,    NUM_13,    NUM_14,      NUM_15,    NUM_16,    NUM_17,    NUM_18,    NUM_19,   
+    KC_NO, NUM_20,    NUM_21,   NUM_22,    NUM_23,    NUM_24,      NUM_25,    NUM_26,    NUM_27,    NUM_28,    NUM_29,    KC_NO,      
+                                ALPHA_30, ALPHA_31, ALPHA_32,   ALPHA_33, ALPHA_34, ALPHA_35
   ),
+
 // see https://neo-layout.org/
   [_SYM] = LAYOUT(
 //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷        
              KC_NO,    KC_AT,    KC_LBRC,  KC_RBRC,  KC_CIRC,   KC_EXLM,  KC_LT,    KC_GT,    KC_EQL,   KC_AMPR,
              KC_BSLS,  KC_SLASH, KC_LCBR,  KC_RCBR,  KC_PAST,   KC_QUES,  KC_LPRN,  KC_RPRN,  KC_MINS,  KC_AT,
     KC_NO,   KC_HASH,  KC_DLR,   KC_PIPE,  KC_TILDE, KC_GRV,    KC_PLUS,  KC_PERC,  KC_QUOTE, KC_QUOT, KC_UNDS,   KC_NO,
-                                 KC_NO,    SPACE,    KC_MEH,    OS_LSFT,  MAGIC,    KC_NO // need to check this out!?
+                                 ALPHA_30, ALPHA_31, ALPHA_32,   ALPHA_33, ALPHA_34, ALPHA_35
   ),
 
 
@@ -104,9 +104,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 uint16_t get_combo_term(uint16_t index, combo_t *combo) {
     switch (index )
-    {
-      case CMB_Q:
-          return COMBO_TERM + 100;
+    {      
         default:
             return COMBO_TERM;
     }

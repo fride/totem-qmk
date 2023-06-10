@@ -1,6 +1,7 @@
 build: clean
     DOCKER_BUILDKIT=1 docker buildx build -o type=local,dest=result . 
-
+redox:
+    DOCKER_BUILDKIT=1 docker buildx build --build-arg="KEYBOARD=redox" -o type=local,dest=result . 
 fetch_totem_src:
     git submodule add -f git@github.com:GEIGEIGEIST/qmk-config-totem.git
     git submodule sync

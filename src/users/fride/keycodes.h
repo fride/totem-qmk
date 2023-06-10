@@ -4,6 +4,7 @@
 
 enum layers {
     _ALPHA,
+    _ALPHA2,
     _NUM,
     _SYM,
     _MODS,
@@ -55,13 +56,16 @@ enum custom_keycodes {
   TS_LCTL, // Two-shot ctrl
 
   // used below in the thumb
-  SHIFT,
+  NEXTSEN,
 
-  NAV_SHIFT,
-  ARROW_L,
-  ARROW_R,
-  ANFZCH, // TODO remove this?
+  // German special nonsense
+  A_UML,
+  O_UML,
+  U_UML,
   SZ,
+
+  ARROW_L,
+  ARROW_R,  
   QU,
 
   COPY_PASTE,
@@ -74,12 +78,12 @@ enum custom_keycodes {
   MOUSE_TGL,
   SLASH,
   UNDER,
+  ALFRED
 };
 
   // The MAGIC NUMBER!
 #define MAGIC ALTREP
 #define REPEAT_SYM LT(_SYM, REPEAT)
-
 #define SPACE LT(_NAV, KC_SPC)
 
 #define HOME_S KC_S
@@ -130,5 +134,5 @@ enum custom_keycodes {
 
 #define EURO S(A(KC_2))
 
-#define COLON_SYM LT(_SYM, KC_COLON)
+#define CLN_SYM LT(_SYM, KC_COLON)
 #define ESC_SYM LT(_SYM, KC_ESC)

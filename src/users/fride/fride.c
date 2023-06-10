@@ -6,6 +6,7 @@
 #include "features/swapper.h"
 #include "features/tap_hold.h"
 #include "keycodes.h"
+#include "layers.h"
 
 const custom_shift_key_t custom_shift_keys[] = {
     {KC_DOT, KC_QUES},  // Shift . is ?
@@ -36,48 +37,49 @@ bool wap_app_cancel(uint16_t keycode) {
 uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
   if ((mods & ~MOD_MASK_SHIFT) == 0) {
     switch (keycode) {
-      case KC_A:
+      case ALPHA_18:
         return KC_O;
       case KC_B:
         return KC_N;  // TODO BEFORE
-      case KC_C:
+      case ALPHA_03: // C
         return KC_Y;
-      case HOME_D:
+      case ALPHA_13:
         return KC_Y;
-      case HOME_E:
+      case ALPHA_17:
         return KC_U;
-      case KC_F:
+      case ALPHA_15:
         return KC_N;
-      case HOME_N:
+      case ALPHA_16:
         return KC_F;  // Fuenf!
-      case KC_G:
+      case ALPHA_23:
         return KC_Y;
-      case KC_I:
+      case ALPHA_19:
         return MG_ION;
-      case KC_J:
+      case ALPHA_22:
         return MG_UST;
-      case KC_K:
+      case ALPHA_21:
         return KC_S;
-      case KC_L:
+      case ALPHA_02:
         return KC_K;
-      case KC_M:
-        return MG_ENT;
+      case ALPHA_01:
+        return KC_T; // AMT and co in Germann ;)
       // N makes no sense!
-      case KC_O:
+      case ALPHA_08:
         return KC_A;
-      case KC_P:
+      case ALPHA_04:
         return KC_Y;
-      case HOME_R:
+      case ALPHA_12:
         return KC_L;
-      case KC_S:
+      case ALPHA_10:
         return KC_K;
-      case HOME_T:
-        return MG_MENT;
-      case KC_U:
+      case ALPHA_11:
+        return KC_M; //ment does not work that well with german
+      case ALPHA_07:
         return KC_E;
-      case KC_V:
+      case ALPHA_00:
         return MG_VER;
-      //
+      case ALPHA_14:
+        return KC_P;
       case KC_EQL:
         return KC_GT;
       case KC_LPRN:
@@ -95,7 +97,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
     }
   } else if ((mods & MOD_MASK_CTRL)) {
     switch (keycode) {
-      case HOME_A:  // Ctrl+A -> Ctrl+C
+      case HOME_A:  // Ctrl+A -> Ctrl+K
         return C(KC_C);
       case KC_C:  // Ctrl+C -> Ctrl+C
         return C(KC_C);
@@ -150,10 +152,43 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         return false;
     }
 
+    // this overrides the repeat keys.
+    // because nf is a commonn bigram in german ;)
+    if (record->event.pressed) {
+      int rep_count = get_repeat_key_count();
+      if (rep_count < -1 && keycode != MG_UST) {
+          send_char('n');
+          return false;
+      }
+       if (rep_count > 0) {
+            switch (keycode) {
+               case ALPHA_16:
+                    unregister_weak_mods(MOD_MASK_CSAG);
+                    send_char('f');
+                    return false;
+                // one time shift after space?
+                case ALPHA_31:
+                  set_oneshot_mods(MOD_BIT(KC_LSFT));
+                  return false;
+                case ALPHA_19: // i -> ng 
+                  SEND_STRING("ng");
+                  return false;                
+            }
+       }       
+    }
+  
     switch (keycode) {      
-      // case REPEAT_SYM:
-      //   repeat_key_tap();
-      //   return false;
+      case ALFRED:
+        if (record->event.pressed) {
+            SEND_STRING( SS_DOWN(X_LALT) SS_TAP(X_SPACE) SS_UP(X_LALT));
+            return false;
+        }
+      case NEXTSEN:  // Next sentence macro.
+        if (record->event.pressed) {
+          SEND_STRING(". ");
+          add_oneshot_mods(MOD_BIT(KC_LSFT));  // Set one-shot mod for shift.
+        }
+        return false;
       case CANCEL:  
         if (record->event.pressed) {
   //     stop_leading();
@@ -168,8 +203,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       case NUMWORD:
         process_num_word_activation(record);
         return false;
-      //TODO das tut noch nicht mit dem Layer Toggle!!
-      case COLON_SYM: {
+      case CLN_SYM: {
         if (record->tap.count && record->event.pressed) {
           tap_code16(KC_COLON);
           return false;
@@ -201,6 +235,29 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
           return true;
         }         
       }
+      case A_UML:
+        if (record->event.pressed) {
+          // TODO SHIFT!
+          SEND_STRING( SS_DOWN(X_LALT) SS_TAP(X_U) SS_UP(X_LALT) SS_TAP(X_A));
+          return false;
+        }
+      case O_UML:
+        if (record->event.pressed) {
+          // TODO SHIFT!
+          SEND_STRING( SS_DOWN(X_LALT) SS_TAP(X_U) SS_UP(X_LALT) SS_TAP(X_O));
+          return false;
+        }
+      case U_UML:
+        if (record->event.pressed) {
+          // TODO SHIFT!
+          SEND_STRING( SS_DOWN(X_LALT) SS_TAP(X_U) SS_UP(X_LALT) SS_TAP(X_U));
+          return false;
+        }
+      case SZ:
+        if (record->event.pressed) {
+          SEND_STRING( SS_DOWN(X_LALT) SS_TAP(X_S) SS_UP(X_LALT));
+          return false;
+        }
       case MG_ION:
         if (record->event.pressed) {
           SEND_STRING("on");
@@ -236,8 +293,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         return false;
       }
     }
-  
-
   return true;
 }
 
@@ -245,6 +300,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 bool tap_hold(uint16_t keycode) {
     switch (keycode) {
       case KC_EQL:
+      case KC_PAST:
+      case KC_LPRN:
+      case KC_LBRC:
+      case KC_LCBR:
+      case KC_LEFT:
+      case KC_UP:
+      case KC_DOWN:
+      case KC_RIGHT:
+      case CPYPASTE:
         return true;
     }
     return false;
@@ -252,14 +316,42 @@ bool tap_hold(uint16_t keycode) {
 
 void tap_hold_send_tap(uint16_t keycode) {
     switch (keycode) {
-      case KC_EQL:
-        
-        default:
+      case CPYPASTE:
+        tap_code16(G(KC_C));
+        break;
+      default:
             tap_code16(keycode);
     }
 }
 void tap_hold_send_hold(uint16_t keycode) {
     switch (keycode) {
+      case CPYPASTE:
+        tap_code16(G(KC_V));
+        break;
+      case KC_LEFT:
+        tap_code16(G(KC_LEFT));
+        break;
+      case KC_UP:
+        tap_code16(G(KC_UP));
+        break;
+      case KC_DOWN:
+        tap_code16(G(KC_DOWN));
+        break;
+      case KC_RIGHT:
+        tap_code16(G(KC_RIGHT));
+        break;
+      case KC_PAST:
+        tap_code16(KC_SLSH);
+        break;
+      case KC_LPRN:
+        tap_code16(KC_RPRN);
+        break;
+      case KC_LBRC:
+        tap_code16(KC_RBRC);
+        break;
+      case KC_LCBR:
+        tap_code16(KC_RCBR);
+        break;
       case KC_EQL:
         send_string(" != ");
         break;
