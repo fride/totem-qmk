@@ -1,4 +1,5 @@
 #include "layermodes.h"
+
 #include "keycodes.h"
 
 static uint16_t num_word_timer;
@@ -31,24 +32,16 @@ void process_num_word_activation(const keyrecord_t *record) {
   }
 }
 
-bool process_num_word(uint16_t keycode, const keyrecord_t *record) {
-  if (!_num_word_enabled)
-    return true;
-
-  switch (keycode) {
-    case QK_MOD_TAP ... QK_MOD_TAP_MAX:
-    case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
-    case QK_TAP_DANCE ... QK_TAP_DANCE_MAX:
-        if (record->tap.count == 0)
-          return true;
-  }
-  keycode = keycode & 0xFF;
-  switch (keycode) {
+// TODO DAS IST KAPUTT!?
+void process_num_word(uint16_t keycode, const keyrecord_t *record) {
+  if (_num_word_enabled) {
+  // keycode = keycode & 0xFF;
+    switch (keycode) {
       // Don't disable for those keycodes
       case KC_1 ... KC_0:
       case KC_PERC:
       case KC_COMM:
-      case KC_DOT: // still a . stops!?
+      case KC_DOT:  // still a . stops!?
       case KC_SLSH:
       case KC_MINS:
       case KC_ASTR:
@@ -58,6 +51,7 @@ bool process_num_word(uint16_t keycode, const keyrecord_t *record) {
       case KC_F19:
       case KC_ENT:
       case REPEAT:
+      case KC_MEH:
       case KC_UNDS:
       case KC_BSPC:
       case OS_LSFT:
@@ -66,10 +60,10 @@ bool process_num_word(uint16_t keycode, const keyrecord_t *record) {
       case OS_LGUI:
         break;
       default:
-        // All other keys disable the layer mode on keyup.
+        // All other keys disable the layer mode on keyup.      
         if (!record->event.pressed) {
           disable_num_word();
         }
+    }
   }
-  return true;
 }

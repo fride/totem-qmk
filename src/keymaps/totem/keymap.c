@@ -15,7 +15,9 @@
 #include <stdio.h>
 #include "totem.h"
 #include "keycodes.h"
+#include "layers.h"
 #include "g/keymap_combo.h"
+#include "features/tap_hold.h"
 
 // ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 // │ D E F I N I T I O N S                                                                                                  │
@@ -30,7 +32,7 @@
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
- /*
+ /* 
    ┌─────────────────────────────────────────────────┐
    │                                                 │      ╭╮╭╮╭╮╭╮
    └─────────────────────────────────────────────────┘      │╰╯╰╯╰╯│
@@ -44,41 +46,38 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                  │  CTRL   │  LOWER  │  SPACE  ││  ENTER  │  RAISE  │  BSPC   │
                                  └─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┘*/
 
- //  [_ALPHA] = LAYOUT(
-//  //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
-//               KC_X,     KC_W,     KC_M,     KC_G,     KC_J,      KC_HASH,  KC_DOT,   KC_QUOT,  KC_SLSH,  KC_COMM,
-//               KC_S,     KC_C,     KC_N,     KC_T,     KC_K,      KC_COMM,  KC_A,     KC_E,     KC_I,     HOME_H,
-//     KC_Q,     KC_F,     KC_P,     KC_L,     KC_D,     KC_V,      KC_MINS,  KC_U,     KC_O,     KC_Y,     KC_B,     KC_MINS,
-//                         REPEAT,             SPACE, KC_MEH,      KC_MEH,  LT(_NUM,KC_R),   REPEAT
-//  ),
    [_ALPHA] = LAYOUT(
- //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
-              KC_V,     KC_M,     KC_L,     KC_C,     KC_P,      KC_B,     MAGIC,    KC_U,     KC_O,     KC_COMM,
-              HOME_S,   HOME_T,   HOME_R,   HOME_D,   KC_Y,      KC_F,     HOME_N ,  HOME_E,   HOME_A,   HOME_I,
-    KC_Q,     KC_X,     KC_K,     KC_J,     KC_G,     KC_W,      KC_Z,     KC_H,     KC_QUOT,  KC_SCLN,  KC_DOT,    KC_MINS,
-                                  REPEAT,   SPACE,    KC_MEH,    KC_MEH,   REPEAT,   OS_LSFT
+           ALPHA_00, ALPHA_01,ALPHA_02, ALPHA_03, ALPHA_04,   ALPHA_05, ALPHA_06, ALPHA_07, ALPHA_08, ALPHA_09,
+           ALPHA_10, ALPHA_11,ALPHA_12, ALPHA_13, ALPHA_14,   ALPHA_15, ALPHA_16, ALPHA_17, ALPHA_18, ALPHA_19,
+    KC_NO, ALPHA_20, ALPHA_21,ALPHA_22, ALPHA_23, ALPHA_24,   ALPHA_25, ALPHA_26, ALPHA_27, ALPHA_28, ALPHA_29,     KC_NO,
+                              ALPHA_30, ALPHA_31, ALPHA_32,   ALPHA_33, ALPHA_34, ALPHA_35
  ),
-
+   [_ALPHA2] = LAYOUT(
+           KC_NO,    ALPHA_00,ALPHA_02, ALPHA_04, KC_NO,      KC_NO,    ALPHA_05, ALPHA_07, ALPHA_08, ALPHA_09,
+           ALPHA_10, ALPHA_11,ALPHA_12, ALPHA_14, KC_NO,      KC_NO,    ALPHA_15, KC_LPRN, KC_LCBR, ALPHA_19,
+    KC_NO, KC_NO,    ALPHA_20,ALPHA_22, ALPHA_24, KC_NO,      KC_NO,    ALPHA_25, A(KC_O), A(KC_O), A(KC_U),        KC_NO,
+                              ALPHA_30, TO(_ALPHA), KC_NO,      KC_NO,    ALPHA_34, ALPHA_35
+ ),
    [_NAV] = LAYOUT(
-//╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷    
-             SW_APP,   KC_ESC,  TAB_L,    TAB_R,   KC_NO,            KC_NO,   KC_BSPC,    KC_UP,     KC_DEL,    KC_Q,
-             OS_LSFT,  OS_LCTL, OS_LALT,  OS_LGUI, OSM(MOD_MEH),     FWD,     KC_LEFT,    KC_DOWN,   KC_RIGHT,  BACK,
-    KC_NO,   KC_NO,    KC_NO,   KC_NO,    KC_NO,   KC_NO,            KC_NO,   KC_NO,      KC_NO,     KC_NO,     CPYPASTE, KC_NO,
-                                 KC_NO, SPACE,  OS_LSFT,          OS_LSFT, SPACE, KC_NO
+           NAV_00,    NAV_01,   NAV_02,    NAV_03,    NAV_04,      NAV_05,    NAV_06,    NAV_07,    NAV_08,    NAV_09,   
+           NAV_10,    NAV_11,   NAV_12,    NAV_13,    NAV_14,      NAV_15,    NAV_16,    NAV_17,    NAV_18,    NAV_19,   
+    KC_NO, NAV_20,    NAV_21,   NAV_22,    NAV_23,    NAV_24,      NAV_25,    NAV_26,    NAV_27,    NAV_28,    NAV_29,    KC_NO,
+                                ALPHA_30, ALPHA_31, ALPHA_32,   ALPHA_33, ALPHA_34, ALPHA_35
   ),
   [_NUM] = LAYOUT(
-//╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷    
-             KC_LBRC,  KC_7,     KC_8,     KC_9,     KC_RBRC,   KC_NO,   KC_2,      KC_3,     KC_4,    KC_NO,
-             KC_7,     KC_4,     KC_5,     KC_6,     KC_NO,     KC_NO,   OS_LGUI,   OS_LALT, KC_NO  ,  OS_LSFT,
-    KC_NO,   KC_1 ,    KC_1,     KC_2,     KC_3,     KC_NO,     KC_NO,   KC_0,      KC_NO,   KC_NO,    KC_NO,     KC_NO,
-                                 KC_NO,    KC_0,     KC_LCTL,   KC_MEH,  OS_LSFT,   KC_NO 
+           NUM_00,    NUM_01,   NUM_02,    NUM_03,    NUM_04,      NUM_05,    NUM_06,    NUM_07,    NUM_08,    NUM_09,     
+           NUM_10,    NUM_11,   NUM_12,    NUM_13,    NUM_14,      NUM_15,    NUM_16,    NUM_17,    NUM_18,    NUM_19,   
+    KC_NO, NUM_20,    NUM_21,   NUM_22,    NUM_23,    NUM_24,      NUM_25,    NUM_26,    NUM_27,    NUM_28,    NUM_29,    KC_NO,      
+                                ALPHA_30, ALPHA_31, ALPHA_32,   ALPHA_33, ALPHA_34, ALPHA_35
   ),
 
+// see https://neo-layout.org/
   [_SYM] = LAYOUT(
-    KC_NO,    KC_DOT,  KC_0,     KC_1,    KC_NO,            KC_NO,   KC_2,       KC_3,      KC_4,      KC_NO,
-    KC_7,     KC_5,    KC_3,     KC_1,    KC_NO,            KC_NO,   OS_LGUI,    OS_LALT,      OS_LCTL,      OS_LSFT,
-    KC_NO, KC_NO,    KC_NO, KC_NO,  KC_9,    KC_NO,         KC_NO,   KC_0,       KC_NO,   KC_NO,   KC_NO, KC_NO,
-           KC_NO,                      KC_0,  KC_LCTL,          KC_MEH,  KC_SPC, KC_NO // need to check this out!?
+//╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷        
+             KC_NO,    KC_AT,    KC_LBRC,  KC_RBRC,  KC_CIRC,   KC_EXLM,  KC_LT,    KC_GT,    KC_EQL,   KC_AMPR,
+             KC_BSLS,  KC_SLASH, KC_LCBR,  KC_RCBR,  KC_PAST,   KC_QUES,  KC_LPRN,  KC_RPRN,  KC_MINS,  KC_AT,
+    KC_NO,   KC_HASH,  KC_DLR,   KC_PIPE,  KC_TILDE, KC_GRV,    KC_PLUS,  KC_PERC,  KC_QUOTE, KC_QUOT, KC_UNDS,   KC_NO,
+                                 ALPHA_30, ALPHA_31, ALPHA_32,   ALPHA_33, ALPHA_34, ALPHA_35
   ),
 
 
@@ -111,11 +110,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 uint16_t get_combo_term(uint16_t index, combo_t *combo) {
     switch (index )
-    {
+    {      
         default:
             return COMBO_TERM;
     }
+}
 
+// TODO https://github.com/qmk/qmk_firmware/blob/master/docs/feature_combo.md
+bool get_combo_must_tap(uint16_t index, combo_t *combo) { 
+  // switch (index)
+  // {
+  //   case CMB_LCTRL:
+  //   case CMB_RCTRL:
+  //   case CMB_EQL:
+  //   case CMB_MINS:
+  //   case CMB_NUM: 
+  //   case CMB_Q: 
+  //   case CMB_W: 
+  //   case CMB_X: 
+  //   case CMB_EXCL:
+  //   case CMB_LPAREN: 
+  //   case CMB_RPAREN: 
+  //   case CMB_RPAREN: 
+  //     return false;
+  // }
+  // return true; 
+  return false;
 }
 /*
   ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸

@@ -1,0 +1,18 @@
+{
+  "containerimage.buildinfo": {
+    "frontend": "dockerfile.v0",
+    "attrs": {
+      "filename": "Dockerfile",
+      "target": "result",
+      "vcs:revision": "85d9745defb9b7b5b5d6470330eeb051e41844b8",
+      "vcs:source": "git@github.com:fride/totem-qmk.git"
+    },
+    "sources": [
+      {
+        "type": "docker-image",
+        "ref": "docker.io/qmkfm/base_container:latest",
+        "pin": "sha256:d27f995fd142681b273d95dc150d3a3683b6b1884b4c46f70c00a1a991d0e11e"
+      }
+    ]
+  }
+}

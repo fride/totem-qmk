@@ -4,11 +4,12 @@
 
 enum layers {
     _ALPHA,
-    _NAV,
+    _ALPHA2,
     _NUM,
     _SYM,
     _MODS,
     _FUN,
+    _NAV
 };
 
 
@@ -41,9 +42,11 @@ enum custom_keycodes {
   CLEAR,  // Clear all WORD, one-shots and reset to BASE
   MG_THE,
   MG_ION,
+  MG_ON,
   MG_ENT,
   MG_UST,
   MG_MENT,
+  MG_VER,
 
   // N-Shot Mods
   OS_LSFT, // OS Mods
@@ -53,13 +56,16 @@ enum custom_keycodes {
   TS_LCTL, // Two-shot ctrl
 
   // used below in the thumb
-  SHIFT,
+  NEXTSEN,
 
-  NAV_SHIFT,
-  ARROW_L,
-  ARROW_R,
-  ANFZCH, // TODO remove this?
+  // German special nonsense
+  A_UML,
+  O_UML,
+  U_UML,
   SZ,
+
+  ARROW_L,
+  ARROW_R,  
   QU,
 
   COPY_PASTE,
@@ -72,10 +78,12 @@ enum custom_keycodes {
   MOUSE_TGL,
   SLASH,
   UNDER,
+  ALFRED
 };
 
   // The MAGIC NUMBER!
 #define MAGIC ALTREP
+#define REPEAT_SYM LT(_SYM, REPEAT)
 #define SPACE LT(_NAV, KC_SPC)
 
 #define HOME_S KC_S
@@ -85,16 +93,36 @@ enum custom_keycodes {
 
 #define HOME_N KC_N
 #define HOME_E KC_E
-#define HOME_A LT(_NUM,KC_A)
+#define HOME_A KC_A
 #define HOME_I KC_I
 
- #define MY_G LGUI_T(KC_G)
- #define MY_J LALT_T(KC_J)     
- #define MY_K LCTL_T(KC_K)
 
-#define MY_H     RGUI_T(KC_H)
-#define MY_QUOT  RALT_T(KC_QUOT)
-#define MY_SCLN  RCTL_T(KC_SCLN)
+#define MY_G KC_G
+#define MY_J KC_J     
+#define MY_K KC_K
+
+#define MY_H     KC_H 
+#define MY_QUOT  KC_QUOT
+#define MY_SCLN  KC_SCLN
+
+// #define HOME_S KC_S
+// #define HOME_T LT(_NUM, KC_T)
+// #define HOME_R LT(_SYM, KC_R)
+// #define HOME_D LT(_NAV,KC_D)
+
+// #define HOME_N LT(_NAV,KC_N)
+// #define HOME_E LT(_SYM,KC_E)
+// #define HOME_A LT(_NUM,KC_A)
+// #define HOME_I KC_I
+
+
+// #define MY_G LGUI_T(KC_G)
+// #define MY_J LALT_T(KC_J)     
+// #define MY_K LCTL_T(KC_K)
+
+// #define MY_H     RGUI_T(KC_H)
+// #define MY_QUOT  RALT_T(KC_QUOT)
+// #define MY_SCLN  RCTL_T(KC_SCLN)
 
 // Semantic Keys
 #define FWD G(KC_RBRC)
@@ -106,5 +134,5 @@ enum custom_keycodes {
 
 #define EURO S(A(KC_2))
 
-#define COLON_SYMB LT(_SYM, KC_COLON)
-#define ESC_SYMB LT(_SYM, KC_ESC)
+#define CLN_SYM LT(_SYM, KC_COLON)
+#define ESC_SYM LT(_SYM, KC_ESC)

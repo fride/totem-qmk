@@ -1,0 +1,123 @@
+#!/usr/bin/env bb
+
+(require '[clojure.test :as t]
+         '[clojure.string :as str]
+         '[babashka.classpath :as cp])
+
+(def keycodes [
+  :QUOTE
+  :REPEAT,
+  :ALTREP,
+  :LEADER,
+  :LLOCK,
+  :CIRC,
+  :GRV,
+  :TILD,
+  :DELIM, ;; on the NUM word layer
+
+  ;; Smart caps lock and layers that turn off on certain keys
+  :CAPSWORD,
+  :MINS,
+  :NUMWORD,
+  :SENTENCE,
+  :CAMEL,
+  :KEBAB,
+
+  ;; Layer management
+  :CANCEL, ;; Cancel SYMWORD and NUMWORD
+  :CLEAR,  ;; Clear all WORD, one-shots and reset to BASE
+  :MG_THE,
+  :MG_ION,
+  :MG_ON,
+  :MG_ENT,
+  :MG_UST,
+  :MG_MENT,
+  :MG_VER,
+
+  ;; N-Shot Mods
+  :OS_LSFT, ;; OS Mods
+  :OS_LCTL, ;; OS Mods
+  :OS_LALT, ;; OS Mods
+  :OS_LGUI, ;; OS Mods
+  :TS_LCTL, ;; Two-shot ctrl
+
+  ;; used below in the thumb
+  :SHIFT,
+
+  ;; German special nonsense
+  :A_UML,
+  :O_UML,
+  :U_UML,
+  :SZ,
+
+  :ARROW_L,
+  :ARROW_R,  
+  :QU,
+
+  :COPY_PASTE,
+  :SP_MOD, ;; oneshot modifier and tap, nav layer on hold. See 'NAV_MOD'
+  :SP_SFT,
+  :CPYPASTE,
+
+  :SW_APP,
+  :SW_WIN,
+  :MOUSE_TGL,
+  :SLASH,
+  :UNDER,
+])
+
+(def key-aliases {:FWD "G(KC_RBRC)"
+                  :BACK "G(KC_LBRC)"
+                  :TAB_L "G(S(KC_LBRC))"
+                  :TAB_R "G(S(KC_RBRC))"
+                  :SPACE_L " A(G(KC_LEFT))"
+                  :SPACE_R "A(G(KC_RGHT))"
+                  :EURO "S(A(KC_2))"})
+
+(def combo-defs {
+    [0 0] "KC_Q"
+    [0 1] "KC_Z"})
+
+
+(def layer-alpha1 [
+    [:v :m :l :c :p     :b :MAGIC :u  :o "'"]
+    [:s :t :r :d :y     :f :n     :e  :a :i]
+    [:x :k :j :g :w     :z :h     "," "." "_"]
+                   [:OS_LSFT :KC_SPACE]
+])
+
+
+(def totem-layout [[0 1 2 3 4 5 6 7 8 9]
+                   [10 11 12 13 14 15 16 17 18 19]
+                   [20 21 22 23 24 25 26 27 28 29]
+                   [30 31 32 33 34 35]])
+
+(defn print-lazyer
+  [kaylayout, key-codes]
+  []
+  )
+
+(defn to-qmk [code]
+  (cond
+    (= "," code) "KC_COMM"
+    (= "." code) "KC_DOT"
+    (= "_" code) "KC_UNDS"
+    (= "'" code) "KC_QUOTE"
+    (number? code) (str "KC_" code)
+    (string? code ) (if (== 1 (count code))
+                      (str "KC_" (str/upper-case code))
+                      code)
+    (keyword? code) (to-qmk (name code))))
+
+
+;; See https://book.babashka.org/#main_file
+;; on how this works.
+(defn -main [& args]
+  (println (str "getting " (get combo-defs [0,0] "NO!?") " ...." layer-alpha1))
+  (println (str (to-qmk :a) " - "))
+  (println (str "Hier eine QMK KeyMap: \n'" (vec (map to-qmk (flatten  layer-alpha1))) "\n'"))
+  (println (str "Hello World" combo-defs)))         
+
+
+(when (= *file* (System/getProperty "babashka.file"))
+  (apply -main *command-line-args*))    
