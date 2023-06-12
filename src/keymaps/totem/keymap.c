@@ -32,7 +32,7 @@
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
- /*
+ /* 
    ┌─────────────────────────────────────────────────┐
    │                                                 │      ╭╮╭╮╭╮╭╮
    └─────────────────────────────────────────────────┘      │╰╯╰╯╰╯│
@@ -51,6 +51,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
            ALPHA_10, ALPHA_11,ALPHA_12, ALPHA_13, ALPHA_14,   ALPHA_15, ALPHA_16, ALPHA_17, ALPHA_18, ALPHA_19,
     KC_NO, ALPHA_20, ALPHA_21,ALPHA_22, ALPHA_23, ALPHA_24,   ALPHA_25, ALPHA_26, ALPHA_27, ALPHA_28, ALPHA_29,     KC_NO,
                               ALPHA_30, ALPHA_31, ALPHA_32,   ALPHA_33, ALPHA_34, ALPHA_35
+ ),
+   [_ALPHA2] = LAYOUT(
+           KC_NO,    ALPHA_00,ALPHA_02, ALPHA_04, KC_NO,      KC_NO,    ALPHA_05, ALPHA_07, ALPHA_08, ALPHA_09,
+           ALPHA_10, ALPHA_11,ALPHA_12, ALPHA_14, KC_NO,      KC_NO,    ALPHA_15, KC_LPRN, KC_LCBR, ALPHA_19,
+    KC_NO, KC_NO,    ALPHA_20,ALPHA_22, ALPHA_24, KC_NO,      KC_NO,    ALPHA_25, A(KC_O), A(KC_O), A(KC_U),        KC_NO,
+                              ALPHA_30, TO(_ALPHA), KC_NO,      KC_NO,    ALPHA_34, ALPHA_35
  ),
    [_NAV] = LAYOUT(
            NAV_00,    NAV_01,   NAV_02,    NAV_03,    NAV_04,      NAV_05,    NAV_06,    NAV_07,    NAV_08,    NAV_09,   

@@ -15,7 +15,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_LSFT ,ALPHA_20,ALPHA_21,ALPHA_22,ALPHA_23,ALPHA_24,KC_NO ,  KC_NO   ,        KC_NO ,  KC_NO , ALPHA_25,ALPHA_26,ALPHA_27,ALPHA_28,ALPHA_29 ,KC_RSFT ,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-     KC_LGUI ,OS_LCTL, OS_LALT ,OS_LGUI ,     ALPHA_30,    ALPHA_31,ALPHA_32,        ALPHA_33,ALPHA_34,    ALPHA_35,     OS_LGUI ,OS_LALT ,OS_LCTL  ,KC_RGHT 
+     KC_LGUI ,OS_LCTL, OS_LALT ,OS_LGUI ,     ALPHA_31,    ALPHA_32,KC_NO,           KC_NO,   KC_NO,       ALPHA_34,     ALPHA_35 ,OS_LALT ,OS_LCTL  ,KC_RGHT 
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
   ),
   [_NAV]= LAYOUT(

@@ -1,3 +1,5 @@
+#pragma once
+
 // Layers
 // https://github.com/Ikcelaks/keyboard_layouts/blob/main/magic_sturdy/magic_sturdy.md
 #define ALPHA_00 KC_V
@@ -11,44 +13,30 @@
 #define ALPHA_08 KC_O 
 #define ALPHA_09 KC_QUOT 
 #define ALPHA_10 LT(_NUM,KC_S)
-// LT(_SYM,KC_T)
-#define ALPHA_11 KC_T 
-
-//LT(_SYM, KC_R) LT(_SYM, KC_R) 
-#define ALPHA_12 KC_R 
-//LT(_NAV,KC_D)
-#define ALPHA_13 KC_D
+#define ALPHA_11 LT(_SYM,KC_T)
+#define ALPHA_12 LT(_SYM, KC_R) 
+#define ALPHA_13 LT(_NAV,KC_D)
 #define ALPHA_14 KC_Y 
 #define ALPHA_15 KC_F 
-//#define ALPHA_16 LT(_NAV,KC_N)
-#define ALPHA_16 KC_N
-//#define ALPHA_17 LT(_SYM,KC_E) 
-#define ALPHA_17 KC_E
-// #define ALPHA_18 LT(_SYM,KC_A)
-#define ALPHA_18 KC_A
-//#define ALPHA_19 LT(_NUM,KC_I)
-#define ALPHA_19 KC_I 
+#define ALPHA_16 LT(_NAV,KC_N)
+#define ALPHA_17 LT(_SYM,KC_E) 
+#define ALPHA_18 LT(_SYM,KC_A)
+#define ALPHA_19 LT(_NUM,KC_I)
 #define ALPHA_20 KC_X 
-//#define ALPHA_21 LCTL_T(KC_K)
-#define ALPHA_21 KC_K 
-//#define ALPHA_22 LALT_T(KC_J)
-#define ALPHA_22 KC_J
-//#define ALPHA_23 LGUI_T(KC_G)
-#define ALPHA_23 KC_G
+#define ALPHA_21 LCTL_T(KC_K)
+#define ALPHA_22 LALT_T(KC_J)
+#define ALPHA_23 LGUI_T(KC_G)
 #define ALPHA_24 KC_W 
 #define ALPHA_25 KC_Z 
-//#define ALPHA_26 RGUI_T(KC_H)
-#define ALPHA_26 KC_H
-// #define ALPHA_27 RALT_T(KC_COMM)
-#define ALPHA_27 KC_COMM
-//#define ALPHA_28 RCTL_T(KC_DOT)
-#define ALPHA_28 KC_DOT
+#define ALPHA_26 RGUI_T(KC_H)
+#define ALPHA_27 RALT_T(KC_COMM)
+#define ALPHA_28 RCTL_T(KC_DOT)
 #define ALPHA_29 KC_UNDS 
 
 #define ALPHA_30 KC_NO
 #define ALPHA_31 LT(_NAV,KC_SPACE) 
-#define ALPHA_32 KC_MEH
-#define ALPHA_33 OS_LSFT 
+#define ALPHA_32 OS_LSFT
+#define ALPHA_33 OSL(_ALPHA2) 
 #define ALPHA_34 REPEAT
 #define ALPHA_35 KC_NO
 
