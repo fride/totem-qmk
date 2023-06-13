@@ -123,7 +123,9 @@ bool get_repeat_key_eligible_user(uint16_t keycode, keyrecord_t *record,
 
 // clang-format off
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
-  
+   
+   if (!process_achordion(keycode, record)) { return false; }
+
    if (!process_repeat_key_with_alt(keycode, record, REPEAT, ALTREP)) {
     return false;
   }
@@ -226,15 +228,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         } else {
           return true;
         }         
-      }
-      case LSFT_T(REPEAT): {
-        if (record->tap.count > 0) {
-          repeat_key_tap();
-          return false;
-        } else {
-          return true;
-        }         
-      }
+      }      
       case A_UML:
         if (record->event.pressed) {
           // TODO SHIFT!
@@ -358,6 +352,33 @@ void tap_hold_send_hold(uint16_t keycode) {
     }
 }
 
+// // Select Shift hold immediately with a nested key
+// bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
+//   return IS_QK_MOD_TAP(keycode) && IS_MT_SHIFT(keycode) && !IS_TYPING();
+// }
+
+bool achordion_chord(uint16_t tap_hold_keycode,
+                     keyrecord_t* tap_hold_record,
+                     uint16_t other_keycode,
+                     keyrecord_t* other_record) {
+
+  // Exceptionally consider the following chords as holds, even though they
+  // are on the same hand.
+  switch (tap_hold_keycode) {
+    case ALPHA_31:  
+    case NUMWORD:
+       return true;       
+  }
+
+  // Also allow same-hand holds when the other key is in the rows below the
+  // alphas. I need the `% (MATRIX_ROWS / 2)` because my keyboard is split.
+  if (other_record->event.key.row % (MATRIX_ROWS / 2) >= 4) { return true; }
+
+  // Otherwise, follow the opposite hands rule.
+  return achordion_opposite_hands(tap_hold_record, other_record);
+}
+
 void matrix_scan_user(void) {
     tap_hold_matrix_scan();
+    accordion_task();
 }
