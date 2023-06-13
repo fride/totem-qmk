@@ -1,3 +1,9 @@
+// Layout key reference
+//    KC_V, KC_M, KC_L,    KC_C,    KC_P,      KC_B MAGIC, KC_U,    KC_O,   KC_QUOT
+//    HM_S, HM_T, HM_R,    HM_D,    KC_Y,      KC_F HM_N,  HM_E,    HM_A,   HM_I
+//    KC_X, KC_K, KC_J,    KC_G,    KC_W,      KC_Z KC_H,  KC_COMM, KC_DOT, KC_UNDS
+//                         NAV_SPC, ____,      ___, REPEAT
+
 // COMB( combo_caps,   CAPSWORD, KC_T,    KC_A)
 
 // cancel anymods and layers, please! The PANIC BUTTON!
@@ -25,6 +31,27 @@ COMB( COMBO_RCTL,       OS_LCTL,      ALPHA_17, ALPHA_18)
 
 COMB( COMBO_NEXTSEN,    NEXTSEN,      ALPHA_31, ALPHA_28)
 
-COMB( COMBO_LPAREN,     KC_LPRN,   ALPHA_13, ALPHA_16)
-COMB( COMBO_MINS,       KC_MINS,   ALPHA_01, ALPHA_03)
-COMB( COMBO_EQL,        KC_EQL,   ALPHA_06, ALPHA_08)
+// COMB( COMBO_LPAREN,     KC_LPRN,   ALPHA_13, ALPHA_16)
+// COMB( COMBO_MINS,       KC_MINS,   ALPHA_01, ALPHA_03)
+// COMB( COMBO_EQL,        KC_EQL,   ALPHA_06, ALPHA_08)
+
+
+// COMB( left_parenthesis,     KC_LPRN,    ALPHA_13, ALPHA_16)
+// COMB( left_brace,           KC_LCBRC,   ALPHA_13, ALPHA_17)
+// COMB( left_bracket,         KC_BRKT,    ALPHA_13, ALPHA_18)
+// COMB( less_than,            KC_LT,      ALPHA_13, ALPHA_19)
+// COMB( right_parenthesis,    KC_RPRN,    ALPHA_13, ALPHA_6)
+// COMB( right_brace,          KC_RCBR,    ALPHA_13, ALPHA_7)
+// COMB( right_bracket,        KC_RBCT,    ALPHA_13, ALPHA_8)
+// COMB( more_than,            KC_GT,      ALPHA_13, ALPHA_9)
+
+// COMB( TILDE,        KC_TILDE,       ALPHA_12, ALPHA_15)
+// COMB( COLON,        KC_COLON,       ALPHA_12, ALPHA_16)
+// COMB( SEMICOLON,    KC_SEMICOLON,   ALPHA_12, ALPHA_17)
+// COMB( HASH,         KC_HASH,        ALPHA_12, ALPHA_18)
+// COMB( PERCENT,      KC_PERCENT,     ALPHA_12, ALPHA_19)
+// COMB( CARET,        KC_CIRC,        ALPHA_12, ALPHA_5)
+// COMB( PIPE,         KC_PIPE,        ALPHA_12, ALPHA_6)
+// COMB( BACKSLASH,    KC_BACKSLASH,   ALPHA_12, ALPHA_7)
+// COMB( AT,           KC_AT,          ALPHA_12, ALPHA_8)
+// COMB( DOLLAR,       KC_DOLLAR,      ALPHA_12, ALPHA_9)
