@@ -1,5 +1,5 @@
 #include "nshot_mod.h"
-#include "keycodes.h"
+#include "layout.h"
 
 #define modbit_lclg (MOD_BIT(KC_LCTL) | MOD_BIT(KC_LGUI))
 
@@ -125,8 +125,8 @@ bool is_nshot_cancel_key(uint16_t keycode) {
     switch (keycode) {
         case CLEAR:
         case CANCEL:
-        case SPACE:
-            if (layer_state_is(_NAV)) {
+        case NAV_SPC:
+            if (layer_state_is(NAV)) {
                 return true;
             } else {
                 return false;
@@ -139,7 +139,8 @@ bool is_nshot_cancel_key(uint16_t keycode) {
 bool is_nshot_ignored_key(uint16_t keycode) {
     switch (keycode) {
         //case NAVMODE:
-        case SPACE:
+        case NAV_SPC:
+        case NUMWORD:
         case OS_LSFT:
         case OS_LCTL:
         case OS_LALT:

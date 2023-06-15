@@ -1,4 +1,4 @@
-AUTO_SHIFT_ENABLE = yes
+AUTO_SHIFT_ENABLE = no
 COMBO_ENABLE = yes
 MOUSEKEY_ENABLE = yes
 TAP_DANCE_ENABLE = no
@@ -36,5 +36,5 @@ SRC += features/nshot_mod.c
 SRC += features/repeat_key.c
 SRC += features/custom_shift_keys.c
 SRC += features/tap_hold.c
-SRC += features/achordion.c
+# SRC += features/achordion.c
 SRC += fride.c
