@@ -5,8 +5,7 @@ enum layers {
     ALPHA,
     ALPHA2,
     NUM,
-    SYM1,
-    SYM2,
+    SYM,
     MODS,
     FUN,
     NAV
@@ -113,6 +112,18 @@ enum custom_keycodes {
 #define OS_SYM OSL(SYM)
 #define OS_MEH OSM(MOD_MEH) 
 
+// Mod tap macros
+#define HM_S LSFT_T(KC_S)
+#define HM_T LCTL_T(KC_T)
+#define HM_R LALT_T(KC_R)
+#define HM_D LGUI_T(KC_D)
+#define HM_N RGUI_T(KC_N)
+#define HM_E RALT_T(KC_E)
+#define HM_A LCTL_T(KC_A)
+#define HM_I RSFT_T(KC_I)
+// does not work with the totem ;)
+// #define HRML(k1, k2, k3, k4) LT(SYM,k1), LCTL_T(k2), LALT_T(k3), LGUI_T(k4)
+// #define HRMR(k1, k2, k3, k4) RGUI_T(k1), RALT_T(k2), LCTL_T(k3), LT(SYM, k4)
 
 #define _______ KC_NO
 #define ___________________________________________ _______, _______, _______, _______, _______
@@ -121,7 +132,7 @@ enum custom_keycodes {
 // clang-format off
 #define _BASE \
 	KC_V,    KC_M,    KC_L,    KC_C,    KC_P,        KC_B,    MAGIC,   KC_U,    KC_O,    KC_QUOT,   \
-	KC_S,    KC_T,    KC_R,    KC_D,    KC_Y,        KC_F,    KC_N,    KC_E,    KC_A,    KC_I,      \
+	HM_S,    HM_T,    HM_R,    HM_D,    KC_Y,        KC_F,    HM_N,    HM_E,    HM_A,    HM_I,      \
 	KC_X,    KC_K,    KC_J,    KC_G,    KC_W,        KC_Z,    KC_H,    KC_COMM, KC_DOT,  KC_UNDS,   \
 	                           NAV_SPC, OS_MEH,      REPEAT,  OS_LSFT
 
@@ -134,10 +145,15 @@ enum custom_keycodes {
 
 // clang-format off
 #define _NUM \
-	KC_LBRC, KC_7,    KC_8,    KC_9,    KC_RBRC,     _______, _______, _______, _______, _______,     \
-	KC_0,    KC_1,    KC_2,    KC_3,    KC_EQL,      _______, OS_LGUI, OS_LALT, OS_LCTL, OS_LSFT,  \
-	KC_GRV,  KC_4,    KC_5,    KC_6,    KC_PIPE,     _______, _______, _______, _______, _______,  \
+	_______, _______, _______, _______, _______,     _______, _______, _______, _______, _______,     \
+	KC_7,    KC_5,    KC_3,    KC_1,    _______,     _______, KC_0,    KC_2,   KC_4,     KC_6,  \
+	_______, _______, _______, KC_9,    _______,     _______, KC_8,    KC_COMM,KC_DOT,   KC_UNDS,  \
 	                           NAV_SPC, OS_MEH,      REPEAT,  OS_LSFT
+// #define _NUM \
+// 	KC_LBRC, KC_7,    KC_8,    KC_9,    KC_RBRC,     _______, _______, _______, _______, _______,     \
+// 	KC_0,    KC_1,    KC_2,    KC_3,    KC_EQL,      _______, OS_LGUI, OS_LALT, OS_LCTL, OS_LSFT,  \
+// 	KC_GRV,  KC_4,    KC_5,    KC_6,    KC_PIPE,     _______, _______, _______, _______, _______,  \
+// 	                           NAV_SPC, OS_MEH,      REPEAT,  OS_LSFT
 
 // clang-format off
 #define _SYM1 \

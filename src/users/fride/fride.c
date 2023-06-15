@@ -5,6 +5,7 @@
 #include "features/repeat_key.h"
 #include "features/swapper.h"
 #include "features/tap_hold.h"
+#include "features/achordion.h"
 #include "layout.h"
 
 const custom_shift_key_t custom_shift_keys[] = {
@@ -36,23 +37,23 @@ bool wap_app_cancel(uint16_t keycode) {
 uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
   if ((mods & ~MOD_MASK_SHIFT) == 0) {
     switch (keycode) {
-      case KC_A:
+      case HM_A:
         return KC_O;
       case KC_B:
         return KC_N;  // TODO BEFORE
       case KC_C: // C
         return KC_Y;
-      case KC_D:
+      case HM_D:
         return KC_Y;
-      case KC_E:
+      case HM_E:
         return KC_U;
       case KC_F:
         return KC_N;
-      case KC_N:
+      case HM_N:
         return KC_F;  // Fuenf!
       case KC_G:
         return KC_Y;
-      case KC_I:
+      case HM_I:
         return MG_ION;
       case KC_J:
         return MG_UST;
@@ -66,11 +67,11 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
         return KC_A;
       case KC_P:
         return KC_Y;
-      case KC_R:
+      case HM_R:
         return KC_L;
-      case KC_S:
+      case HM_S:
         return KC_K;
-      case KC_T:
+      case HM_T:
         return KC_M; //ment does not work that well with german
       case KC_U:
         return KC_E;
@@ -120,7 +121,8 @@ bool get_repeat_key_eligible_user(uint16_t keycode, keyrecord_t *record,
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {  
-   if (!process_repeat_key_with_alt(keycode, record, REPEAT, ALTREP)) {
+  if (!process_achordion(keycode, record)) { return false; }
+  if (!process_repeat_key_with_alt(keycode, record, REPEAT, ALTREP)) {
     return false;
   }
   
@@ -202,17 +204,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
   //     stop_leading();
           layer_off(NAV);
           layer_off(NUM);
-          layer_off(SYM1);
+          layer_off(SYM);
           //disable_caps_word();
           disable_num_word();
           layer_move(ALPHA);
           return false;
         }
-        /// TODO TEST TEST TEST
-      case LT(NUM,REPEAT):
-        if (record->event.pressed) {
-          return alt_repeat_key_tap();
-        } 
+
       case NUMWORD:
         process_num_word_activation(record);
         return false;
@@ -364,4 +362,34 @@ uint16_t get_combo_term(uint16_t index, combo_t *combo) {
 bool get_combo_must_tap(uint16_t index, combo_t *combo) { 
 
   return false;
+}
+
+bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
+                     uint16_t other_keycode, keyrecord_t* other_record) {
+  // Exceptionally consider the following chords as holds, even though they
+  // are on the same hand in Magic Sturdy.
+  switch (tap_hold_keycode) {
+    case NAV_SPC:
+      return true;
+  }
+
+  // Also allow same-hand holds when the other key is in the rows below the
+  // alphas. I need the `% (MATRIX_ROWS / 2)` because my keyboard is split.
+  if (other_record->event.key.row % (MATRIX_ROWS / 2) >= 4) {
+    return true;
+  }
+
+  // Otherwise, follow the opposite hands rule.
+  return achordion_opposite_hands(tap_hold_record, other_record);
+}
+uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
+  switch (tap_hold_keycode) {
+    case KC_X:
+    // case HOME_SC:
+    // case QHOME_Z:
+    //case QHOME_SL:
+      return 0;  // Bypass Achordion for these keys.
+  }
+
+  return 1000;  // Otherwise use a timeout of 1 second
 }

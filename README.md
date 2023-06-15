@@ -1,6 +1,10 @@
 # totem-qmk
 Keymap for the wired Totem 
 
+
+## Inspiration
+- https://github.com/pixelbreaker/qmk_userspace
+
 # Old Combos:
 
 ```
