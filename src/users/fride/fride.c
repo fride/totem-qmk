@@ -37,23 +37,23 @@ bool wap_app_cancel(uint16_t keycode) {
 uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
   if ((mods & ~MOD_MASK_SHIFT) == 0) {
     switch (keycode) {
-      case KC_A:
+      case HM_A:
         return KC_O;
       case KC_B:
         return KC_N;  // TODO BEFORE
       case KC_C: // C
         return KC_Y;
-      case KC_D:
+      case HM_D:
         return KC_Y;
-      case KC_E:
+      case HM_E:
         return KC_U;
       case KC_F:
         return KC_N;
-      case KC_N:
+      case HM_N:
         return KC_F;  // Fuenf!
       case KC_G:
         return KC_Y;
-      case KC_I:
+      case HM_I:
         return MG_ION;
       case KC_J:
         return MG_UST;
@@ -67,11 +67,11 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
         return KC_A;
       case KC_P:
         return KC_Y;
-      case KC_R:
+      case HM_R:
         return KC_L;
-      case KC_S:
+      case HM_S:
         return KC_K;
-      case KC_T:
+      case HM_T:
         return KC_M; //ment does not work that well with german
       case KC_U:
         return KC_E;

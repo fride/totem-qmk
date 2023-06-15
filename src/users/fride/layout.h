@@ -113,14 +113,14 @@ enum custom_keycodes {
 #define OS_MEH OSM(MOD_MEH) 
 
 // Mod tap macros
-#define HM_S LT(SYM,KC_S)
+#define HM_S LSFT_T(KC_S)
 #define HM_T LCTL_T(KC_T)
 #define HM_R LALT_T(KC_R)
 #define HM_D LGUI_T(KC_D)
 #define HM_N RGUI_T(KC_N)
 #define HM_E RALT_T(KC_E)
 #define HM_A LCTL_T(KC_A)
-#define HM_I LT(SYM,KC_I)
+#define HM_I RSFT_T(KC_I)
 // does not work with the totem ;)
 // #define HRML(k1, k2, k3, k4) LT(SYM,k1), LCTL_T(k2), LALT_T(k3), LGUI_T(k4)
 // #define HRMR(k1, k2, k3, k4) RGUI_T(k1), RALT_T(k2), LCTL_T(k3), LT(SYM, k4)
