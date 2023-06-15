@@ -145,10 +145,15 @@ enum custom_keycodes {
 
 // clang-format off
 #define _NUM \
-	KC_LBRC, KC_7,    KC_8,    KC_9,    KC_RBRC,     _______, _______, _______, _______, _______,     \
-	KC_0,    KC_1,    KC_2,    KC_3,    KC_EQL,      _______, OS_LGUI, OS_LALT, OS_LCTL, OS_LSFT,  \
-	KC_GRV,  KC_4,    KC_5,    KC_6,    KC_PIPE,     _______, _______, _______, _______, _______,  \
+	_______, _______, _______, _______, _______,     _______, _______, _______, _______, _______,     \
+	KC_7,    KC_5,    KC_3,    KC_1,    _______,     _______, KC_0,    KC_2,   KC_4,     KC_6,  \
+	_______, _______, _______, KC_9,    _______,     _______, KC_8,    KC_COMM,KC_DOT,   KC_UNDS,  \
 	                           NAV_SPC, OS_MEH,      REPEAT,  OS_LSFT
+// #define _NUM \
+// 	KC_LBRC, KC_7,    KC_8,    KC_9,    KC_RBRC,     _______, _______, _______, _______, _______,     \
+// 	KC_0,    KC_1,    KC_2,    KC_3,    KC_EQL,      _______, OS_LGUI, OS_LALT, OS_LCTL, OS_LSFT,  \
+// 	KC_GRV,  KC_4,    KC_5,    KC_6,    KC_PIPE,     _______, _______, _______, _______, _______,  \
+// 	                           NAV_SPC, OS_MEH,      REPEAT,  OS_LSFT
 
 // clang-format off
 #define _SYM1 \
