@@ -5,8 +5,7 @@ enum layers {
     ALPHA,
     ALPHA2,
     NUM,
-    SYM1,
-    SYM2,
+    SYM,
     MODS,
     FUN,
     NAV
@@ -113,6 +112,18 @@ enum custom_keycodes {
 #define OS_SYM OSL(SYM)
 #define OS_MEH OSM(MOD_MEH) 
 
+// Mod tap macros
+#define HM_S LT(SYM,KC_S)
+#define HM_T LCTL_T(KC_T)
+#define HM_R LALT_T(KC_R)
+#define HM_D LGUI_T(KC_D)
+#define HM_N RGUI_T(KC_N)
+#define HM_E RALT_T(KC_E)
+#define HM_A LCTL_T(KC_A)
+#define HM_I LT(SYM,KC_I)
+// does not work with the totem ;)
+// #define HRML(k1, k2, k3, k4) LT(SYM,k1), LCTL_T(k2), LALT_T(k3), LGUI_T(k4)
+// #define HRMR(k1, k2, k3, k4) RGUI_T(k1), RALT_T(k2), LCTL_T(k3), LT(SYM, k4)
 
 #define _______ KC_NO
 #define ___________________________________________ _______, _______, _______, _______, _______
@@ -121,7 +132,7 @@ enum custom_keycodes {
 // clang-format off
 #define _BASE \
 	KC_V,    KC_M,    KC_L,    KC_C,    KC_P,        KC_B,    MAGIC,   KC_U,    KC_O,    KC_QUOT,   \
-	KC_S,    KC_T,    KC_R,    KC_D,    KC_Y,        KC_F,    KC_N,    KC_E,    KC_A,    KC_I,      \
+	HM_S,    HM_T,    HM_R,    HM_D,    KC_Y,        KC_F,    HM_N,    HM_E,    HM_A,    HM_I,      \
 	KC_X,    KC_K,    KC_J,    KC_G,    KC_W,        KC_Z,    KC_H,    KC_COMM, KC_DOT,  KC_UNDS,   \
 	                           NAV_SPC, OS_MEH,      REPEAT,  OS_LSFT
 
