@@ -5,8 +5,7 @@
 #include "features/repeat_key.h"
 #include "features/swapper.h"
 #include "features/tap_hold.h"
-#include "keycodes.h"
-#include "layers.h"
+#include "layout.h"
 
 const custom_shift_key_t custom_shift_keys[] = {
     {KC_DOT, KC_QUES},  // Shift . is ?
@@ -37,48 +36,47 @@ bool wap_app_cancel(uint16_t keycode) {
 uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
   if ((mods & ~MOD_MASK_SHIFT) == 0) {
     switch (keycode) {
-      case ALPHA_18:
+      case KC_A:
         return KC_O;
       case KC_B:
         return KC_N;  // TODO BEFORE
-      case ALPHA_03: // C
+      case KC_C: // C
         return KC_Y;
-      case ALPHA_13:
+      case KC_D:
         return KC_Y;
-      case ALPHA_17:
+      case KC_E:
         return KC_U;
-      case ALPHA_15:
+      case KC_F:
         return KC_N;
-      case ALPHA_16:
+      case KC_N:
         return KC_F;  // Fuenf!
-      case ALPHA_23:
+      case KC_G:
         return KC_Y;
-      case ALPHA_19:
+      case KC_I:
         return MG_ION;
-      case ALPHA_22:
+      case KC_J:
         return MG_UST;
-      case ALPHA_21:
+      case KC_K:
         return KC_S;
-      case ALPHA_02:
+      case KC_L:
         return KC_K;
-      case ALPHA_01:
+      case KC_M:
         return KC_T; // AMT and co in Germann ;)
-      // N makes no sense!
-      case ALPHA_08:
+      case KC_O:
         return KC_A;
-      case ALPHA_04:
+      case KC_P:
         return KC_Y;
-      case ALPHA_12:
+      case KC_R:
         return KC_L;
-      case ALPHA_10:
+      case KC_S:
         return KC_K;
-      case ALPHA_11:
+      case KC_T:
         return KC_M; //ment does not work that well with german
-      case ALPHA_07:
+      case KC_U:
         return KC_E;
-      case ALPHA_00:
+      case KC_V:
         return MG_VER;
-      case ALPHA_14:
+      case KC_Y:
         return KC_P;
       case KC_EQL:
         return KC_GT;
@@ -86,8 +84,8 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
         return KC_RPRN;
       case KC_MINS:
         return KC_GT;
-      case SPACE:
-        return MG_THE;
+//case NAV_SPC:
+//        return MG_THE;
       case KC_ESC:
         return KC_COLON;
       case KC_1 ... KC_0:
@@ -97,7 +95,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
     }
   } else if ((mods & MOD_MASK_CTRL)) {
     switch (keycode) {
-      case HOME_A:  // Ctrl+A -> Ctrl+K
+      case KC_A:  // Ctrl+A -> Ctrl+K
         return C(KC_C);
       case KC_C:  // Ctrl+C -> Ctrl+C
         return C(KC_C);
@@ -121,11 +119,7 @@ bool get_repeat_key_eligible_user(uint16_t keycode, keyrecord_t *record,
   return true;
 }
 
-// clang-format off
-bool process_record_user(uint16_t keycode, keyrecord_t* record) {
-   
-   if (!process_achordion(keycode, record)) { return false; }
-
+bool process_record_user(uint16_t keycode, keyrecord_t* record) {  
    if (!process_repeat_key_with_alt(keycode, record, REPEAT, ALTREP)) {
     return false;
   }
@@ -164,15 +158,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       }
        if (rep_count > 0) {
             switch (keycode) {
-               case ALPHA_16:
+               case KC_N:
                     unregister_weak_mods(MOD_MASK_CSAG);
                     send_char('f');
                     return false;
                 // one time shift after space?
-                case ALPHA_31:
+                case NAV_SPC:
                   set_oneshot_mods(MOD_BIT(KC_LSFT));
                   return false;
-                case ALPHA_19: // i -> ng 
+                case KC_I:
                   SEND_STRING("ng");
                   return false;                
             }
@@ -180,6 +174,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     }
   
     switch (keycode) {      
+      case LPAREN:
+        if (record->event.pressed) {
+          if (shifted) {tap_code16(KC_LT);}
+          else {tap_code16(KC_LPRN);}
+          return false;
+        }
+      case RPAREN:
+        if (record->event.pressed) {
+          if (shifted) {tap_code16(KC_GT);}
+          else {tap_code16(KC_LPRN);}
+          return false;
+        }
       case ALFRED:
         if (record->event.pressed) {
             SEND_STRING( SS_DOWN(X_LALT) SS_TAP(X_SPACE) SS_UP(X_LALT));
@@ -194,25 +200,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       case CANCEL:  
         if (record->event.pressed) {
   //     stop_leading();
-          layer_off(_NAV);
-          layer_off(_NUM);
-          layer_off(_SYM);
+          layer_off(NAV);
+          layer_off(NUM);
+          layer_off(SYM1);
           //disable_caps_word();
           disable_num_word();
-          layer_move(_ALPHA);
+          layer_move(ALPHA);
           return false;
         }
+        /// TODO TEST TEST TEST
+      case LT(NUM,REPEAT):
+        if (record->event.pressed) {
+          return alt_repeat_key_tap();
+        } 
       case NUMWORD:
         process_num_word_activation(record);
         return false;
-      case CLN_SYM: {
-        if (record->tap.count && record->event.pressed) {
-          tap_code16(KC_COLON);
-          return false;
-        } else {
-          return true;
-        }         
-      }
       case MAGIC: {
         if (record->tap.count > 0) {
           tap_code16(ALTREP);
@@ -220,15 +223,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         } else {
           return true;
         }         
-      }
-      case ESC_SYM: {
-        if (record->tap.count && record->event.pressed) {
-          tap_code16(KC_ESC);
-          return false;
-        } else {
-          return true;
-        }         
-      }      
+      }    
       case A_UML:
         if (record->event.pressed) {
           // TODO SHIFT!
@@ -302,6 +297,7 @@ bool tap_hold(uint16_t keycode) {
       case KC_UP:
       case KC_DOWN:
       case KC_RIGHT:
+  
       case CPYPASTE:
         return true;
     }
@@ -352,33 +348,20 @@ void tap_hold_send_hold(uint16_t keycode) {
     }
 }
 
-// // Select Shift hold immediately with a nested key
-// bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
-//   return IS_QK_MOD_TAP(keycode) && IS_MT_SHIFT(keycode) && !IS_TYPING();
-// }
-
-bool achordion_chord(uint16_t tap_hold_keycode,
-                     keyrecord_t* tap_hold_record,
-                     uint16_t other_keycode,
-                     keyrecord_t* other_record) {
-
-  // Exceptionally consider the following chords as holds, even though they
-  // are on the same hand.
-  switch (tap_hold_keycode) {
-    case ALPHA_31:  
-    case NUMWORD:
-       return true;       
-  }
-
-  // Also allow same-hand holds when the other key is in the rows below the
-  // alphas. I need the `% (MATRIX_ROWS / 2)` because my keyboard is split.
-  if (other_record->event.key.row % (MATRIX_ROWS / 2) >= 4) { return true; }
-
-  // Otherwise, follow the opposite hands rule.
-  return achordion_opposite_hands(tap_hold_record, other_record);
-}
-
 void matrix_scan_user(void) {
     tap_hold_matrix_scan();
-    accordion_task();
+}
+
+uint16_t get_combo_term(uint16_t index, combo_t *combo) {
+    switch (index )
+    {      
+        default:
+            return COMBO_TERM;
+    }
+}
+
+// TODO https://github.com/qmk/qmk_firmware/blob/master/docs/feature_combo.md
+bool get_combo_must_tap(uint16_t index, combo_t *combo) { 
+
+  return false;
 }
