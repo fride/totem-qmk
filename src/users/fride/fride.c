@@ -8,6 +8,9 @@
 #include "features/achordion.h"
 #include "layout.h"
 
+
+#define IS_SHIFTED(mods) (mods | get_weak_mods() | get_oneshot_mods() & MOD_MASK_SHIFT);
+
 const custom_shift_key_t custom_shift_keys[] = {
     {KC_DOT, KC_EXLM}, 
     {KC_COMM, KC_QUES},
@@ -310,6 +313,8 @@ bool tap_hold(uint16_t keycode) {
       case KC_LBRC:
       case KC_LCBR:
       case KC_LEFT:
+      case KC_EXLM:
+      case KC_LT:
       case KC_UP:
       case KC_DOWN:
       case KC_RIGHT:
@@ -320,7 +325,7 @@ bool tap_hold(uint16_t keycode) {
 }
 
 void tap_hold_send_tap(uint16_t keycode) {
-    switch (keycode) {
+    switch (keycode) {      
       case CPYPASTE:
         tap_code16(G(KC_C));
         break;
@@ -349,15 +354,21 @@ void tap_hold_send_hold(uint16_t keycode) {
         tap_code16(KC_SLSH);
         break;
       case KC_LPRN:
-        tap_code16(KC_RPRN);
+        SEND_STRING("()" SS_TAP(X_LEFT));
         break;
-      case KC_LBRC:
-        tap_code16(KC_RBRC);
+      case KC_LT:
+        SEND_STRING("<>" SS_TAP(X_LEFT));
+        break;
+      case KC_LBRC:        
+        SEND_STRING("[]" SS_TAP(X_LEFT));        
         break;
       case KC_LCBR:
-        tap_code16(KC_RCBR);
+        SEND_STRING("{}" SS_TAP(X_LEFT));
         break;
       case KC_EQL:
+        send_string(" == ");
+        break;
+      case KC_EXLM:
         send_string(" != ");
         break;
     }

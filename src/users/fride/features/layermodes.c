@@ -37,7 +37,13 @@ void process_num_word(uint16_t keycode, const keyrecord_t *record) {
     switch (keycode) {
       // Don't disable for those keycodes
       case KC_1 ... KC_0:
-      case KC_PERC:
+      case FIVE:
+      case THREE:
+      case ONE:
+      case ZERO:
+      case TWO:
+      case FOUR:
+      case KC_PERC:      
       case KC_COMM:
       case KC_DOT:  // still a . stops!?
       case KC_SLSH:

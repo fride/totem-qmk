@@ -126,6 +126,14 @@ enum custom_keycodes {
 // #define HRML(k1, k2, k3, k4) LT(SYM,k1), LCTL_T(k2), LALT_T(k3), LGUI_T(k4)
 // #define HRMR(k1, k2, k3, k4) RGUI_T(k1), RALT_T(k2), LCTL_T(k3), LT(SYM, k4)
 
+
+#define FIVE  LCTL_T(KC_5)
+#define THREE LALT_T(KC_3)
+#define ONE   LGUI_T(KC_1)
+#define ZERO  RGUI_T(KC_0)
+#define TWO   RALT_T(KC_2)
+#define FOUR  RCTL_T(KC_4)
+
 #define _______ KC_NO
 #define ___________________________________________ _______, _______, _______, _______, _______
 
@@ -146,10 +154,10 @@ enum custom_keycodes {
 
 // clang-format off
 #define _NUM \
-	KC_7,    KC_5,    KC_3,    KC_1,    KC_9,         KC_8,   KC_0,    KC_2,   KC_4,     KC_6,   \
-	KC_NO,   KC_LT,   KC_GT,   KC_NO,    KC_PIPE,     KC_BSLS, KC_LCBR, KC_LPRN,KC_RPRN,  KC_RCBR,   \
-	KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,     KC_CIRC, KC_AMPR, KC_PAST,KC_EQL,   KC_PLUS, \
-	                           NAV_SPC, OS_MEH,      REPEAT,  OS_LSFT
+	KC_7,    KC_5,    KC_3,    KC_1,    KC_9,         KC_8,    KC_0,   KC_2,    KC_4,     KC_6,   \
+	KC_7,    FIVE,    THREE,   ONE,     KC_NO,        KC_NO,   ZERO,   TWO,     FOUR,     KC_6,   \
+	KC_EXLM, KC_AT,   KC_HASH, KC_9,    KC_PERC,      KC_CIRC, KC_8,   KC_COMM, KC_DOT,   KC_UNDS, \
+	                           NAV_SPC, OS_MEH,       REPEAT,  OS_LSFT
 
 
 // clang-format off
