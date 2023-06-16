@@ -9,10 +9,10 @@
 #include "layout.h"
 
 const custom_shift_key_t custom_shift_keys[] = {
-    {KC_DOT, KC_QUES},  // Shift . is ?
-    {KC_COMM, KC_EXLM},
-    {KC_EQL, KC_EQL},  // Don't shift =
-    {KC_SLSH, KC_SLSH},  // Don't shift /
+    {KC_DOT, KC_EXLM}, 
+    {KC_COMM, KC_QUES},
+    // {KC_EQL, KC_EQL},  // Don't shift =
+    // {KC_SLSH, KC_SLSH},  // Don't shift /
 };
 uint8_t NUM_CUSTOM_SHIFT_KEYS =
     sizeof(custom_shift_keys) / sizeof(*custom_shift_keys);
@@ -127,6 +127,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
   }
   
   process_num_word(keycode, record);
+  sym_mode_process(keycode, record);
 
   update_swapper(&sw_app_active, KC_LGUI, KC_TAB, SW_APP, keycode, record,
                  wap_app_cancel);
@@ -214,6 +215,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       case NUMWORD:
         process_num_word_activation(record);
         return false;
+      case SYMWORD:
+        process_sym_word_activation(record);
+        return false;
       case MAGIC: {
         if (record->tap.count > 0) {
           tap_code16(ALTREP);
@@ -221,6 +225,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         } else {
           return true;
         }         
+      }    
+      case CLN_NUM: {
+        if (record->event.pressed && record->tap.count > 0) {
+          tap_code16(KC_COLON);
+          return false;
+        } 
+        break;        
+      }    
+      case ESC_SYM: {
+        if (record->event.pressed && record->tap.count > 0) {
+          tap_code16(KC_ESC);
+          return false;
+        } 
+        break;        
       }    
       case A_UML:
         if (record->event.pressed) {
@@ -295,7 +313,6 @@ bool tap_hold(uint16_t keycode) {
       case KC_UP:
       case KC_DOWN:
       case KC_RIGHT:
-  
       case CPYPASTE:
         return true;
     }

@@ -31,6 +31,7 @@ enum custom_keycodes {
   CAPSWORD,
   MINS,
   NUMWORD,
+  SYMWORD,
   SENTENCE,
   CAMEL,
   KEBAB,
@@ -106,9 +107,9 @@ enum custom_keycodes {
 #define MAGIC ALTREP
 #define REPEAT_SYM LT(SYM, REPEAT)
 #define NAV_SPC LT(NAV, KC_SPC)
-// how to arrange this!?s
-// #define ESC_SYM LT(SYM,KC_COLON)
-// #define CLN_NUM LT(NUM, KC_COLON)
+#define ESC_SYM LT(SYM, KC_ESC)
+#define CLN_NUM LT(SYM, KC_COLON)
+
 #define OS_SYM OSL(SYM)
 #define OS_MEH OSM(MOD_MEH) 
 
@@ -134,7 +135,7 @@ enum custom_keycodes {
 	KC_V,    KC_M,    KC_L,    KC_C,    KC_P,        KC_B,    MAGIC,   KC_U,    KC_O,    KC_QUOT,   \
 	HM_S,    HM_T,    HM_R,    HM_D,    KC_Y,        KC_F,    HM_N,    HM_E,    HM_A,    HM_I,      \
 	KC_X,    KC_K,    KC_J,    KC_G,    KC_W,        KC_Z,    KC_H,    KC_COMM, KC_DOT,  KC_UNDS,   \
-	                           NAV_SPC, OS_MEH,      REPEAT,  OS_LSFT
+	                           NAV_SPC, OSL(SYM),     NUMWORD, OS_LSFT
 
 // clang-format off
 #define _NAV \
@@ -145,21 +146,17 @@ enum custom_keycodes {
 
 // clang-format off
 #define _NUM \
-	_______, _______, _______, _______, _______,     _______, _______, _______, _______, _______,     \
-	KC_7,    KC_5,    KC_3,    KC_1,    _______,     _______, KC_0,    KC_2,   KC_4,     KC_6,  \
-	_______, _______, _______, KC_9,    _______,     _______, KC_8,    KC_COMM,KC_DOT,   KC_UNDS,  \
+	KC_7,    KC_5,    KC_3,    KC_1,    KC_9,         KC_8,   KC_0,    KC_2,   KC_4,     KC_6,   \
+	KC_NO,   KC_LT,   KC_GT,   KC_NO,    KC_PIPE,     KC_BSLS, KC_LCBR, KC_LPRN,KC_RPRN,  KC_RCBR,   \
+	KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,     KC_CIRC, KC_AMPR, KC_PAST,KC_EQL,   KC_PLUS, \
 	                           NAV_SPC, OS_MEH,      REPEAT,  OS_LSFT
-// #define _NUM \
-// 	KC_LBRC, KC_7,    KC_8,    KC_9,    KC_RBRC,     _______, _______, _______, _______, _______,     \
-// 	KC_0,    KC_1,    KC_2,    KC_3,    KC_EQL,      _______, OS_LGUI, OS_LALT, OS_LCTL, OS_LSFT,  \
-// 	KC_GRV,  KC_4,    KC_5,    KC_6,    KC_PIPE,     _______, _______, _______, _______, _______,  \
-// 	                           NAV_SPC, OS_MEH,      REPEAT,  OS_LSFT
+
 
 // clang-format off
 #define _SYM1 \
-	  KC_AT,   KC_UNDS, KC_LBRC, KC_RBRC, KC_CIRC,      KC_EXLM, KC_LT,   KC_GT,   KC_EQL,  KC_AMPR, \
-      KC_BSLS, KC_SLSH, KC_LCBR, KC_RCBR, KC_ASTR,      KC_QUES, KC_LPRN, KC_RPRN, KC_MINS, KC_COLN, \
-      KC_HASH, KC_DLR,  KC_PIPE, KC_TILD, KC_GRV,       KC_PLUS, KC_PERC, KC_DQUO, KC_QUOT, KC_SCLN, \
+	  KC_TILD, KC_PLUS, KC_ASTR, KC_EXLM, KC_NO,     KC_NO,   KC_HASH, KC_AT,   KC_CIRC, KC_NO, \
+      KC_PIPE, KC_LCBR, KC_RCBR, KC_MINS, KC_PIPE,   KC_GRV,  KC_QUES, KC_LBRC, KC_RBRC, KC_NO, \
+      KC_NO,   KC_LT,   KC_GT,   KC_PERC, KC_NO,     KC_SLSH, KC_AMPR, KC_LPRN, KC_RPRN, KC_UNDS, \
 	                           NAV_SPC, OS_MEH,      REPEAT,  OS_LSFT
 
 

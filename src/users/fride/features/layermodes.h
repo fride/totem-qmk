@@ -12,3 +12,14 @@ void disable_num_word(void);
 void process_num_word_activation(const keyrecord_t *record);
 // Process numword, to be placed in process user
 void process_num_word(uint16_t keycode, const keyrecord_t *record);
+
+
+/* -------- Sym Mode -------- */
+// Turn Sym mode on. To be called from a custom keycode.
+void process_sym_word_activation(keyrecord_t *record);
+
+// Turn sym mode off.
+void sym_mode_disable(void);
+
+// Handle each key for sym mode.
+void sym_mode_process(uint16_t keycode, keyrecord_t *record);

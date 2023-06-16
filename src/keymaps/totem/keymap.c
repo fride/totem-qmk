@@ -31,7 +31,7 @@
         { R04,    R03,   R02,   R01,   R00 }, \
         { R14,    R13,   R12,   R11,   R10 }, \
         { R24,    R23,   R22,   R21,   R20 }, \
-        { KC_NO,  KC_NO,   NUMWORD,   R31,   R30 }, \
+        { KC_NO,  KC_NO,   OSL(NUM),   R31,   R30 }, \
     }
 
 
