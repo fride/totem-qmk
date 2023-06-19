@@ -9,6 +9,7 @@ RUN mkdir -p /qmk_firmware/keyboards/redox/keymaps/fride
 
 COPY ./qmk-config-totem/totem/ /qmk_firmware/keyboards/totem/
 COPY ./src/keymaps/totem/ /qmk_firmware/keyboards/totem/keymaps/fride/
+COPY ./src/keymaps/planck/ /qmk_firmware/keyboards/planck/keymaps/fride/
 COPY ./src/keymaps/redox/ /qmk_firmware/keyboards/redox/keymaps/fride/
 COPY ./src/keymaps/ferris/ /qmk_firmware/keyboards/ferris/keymaps/fride/
 COPY ./src/users/fride/ /qmk_firmware/users/fride/

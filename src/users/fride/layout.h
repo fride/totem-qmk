@@ -143,7 +143,7 @@ enum custom_keycodes {
 	KC_V,    KC_M,    KC_L,    KC_C,    KC_P,        KC_B,    MAGIC,   KC_U,    KC_O,    KC_QUOT,   \
 	HM_S,    HM_T,    HM_R,    HM_D,    KC_Y,        KC_F,    HM_N,    HM_E,    HM_A,    HM_I,      \
 	KC_X,    KC_K,    KC_J,    KC_G,    KC_W,        KC_Z,    KC_H,    KC_COMM, KC_DOT,  KC_UNDS,   \
-	                           NAV_SPC, OSL(SYM),     NUMWORD, OS_LSFT
+	                           NAV_SPC, OS_MEH,      REPEAT, OS_LSFT
 
 // clang-format off
 #define _NAV \
@@ -154,9 +154,9 @@ enum custom_keycodes {
 
 // clang-format off
 #define _NUM \
-	KC_7,    KC_5,    KC_3,    KC_1,    KC_9,         KC_8,    KC_0,   KC_2,    KC_4,     KC_6,   \
-	KC_7,    FIVE,    THREE,   ONE,     KC_NO,        KC_NO,   ZERO,   TWO,     FOUR,     KC_6,   \
-	KC_EXLM, KC_AT,   KC_HASH, KC_9,    KC_PERC,      KC_CIRC, KC_8,   KC_COMM, KC_DOT,   KC_UNDS, \
+	KC_EXLM, KC_AT,   _______, _______, _______,      _______, KC_HASH,KC_AMPR, _______,  _______,   \
+	KC_7,    FIVE,    THREE,   ONE,     KC_PLUS,      KC_PAST, ZERO,   TWO,     FOUR,     KC_6,   \
+	_______, _______, KC_HASH, KC_9,    KC_PERC,      KC_CIRC, KC_8,   KC_COMM, KC_DOT,   KC_UNDS, \
 	                           NAV_SPC, OS_MEH,       REPEAT,  OS_LSFT
 
 

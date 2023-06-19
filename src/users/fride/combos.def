@@ -1,19 +1,19 @@
 // Layout key reference
-//    KC_V, KC_M, KC_L,    KC_C,    KC_P,      KC_B MAGIC, KC_U,    KC_O,   KC_QUOT
-//    HM_S, HM_T, HM_R,    HM_D,    KC_Y,      KC_F HM_N,  HM_E,    HM_A,   HM_I
-//    KC_X, KC_K, KC_J,    KC_G,    KC_W,      KC_Z KC_H,  KC_COMM, KC_DOT, KC_UNDS
-//                         NAV_SPC, ____,      ___, REPEAT
+//    KC_V, KC_M, KC_L,    KC_C,    KC_P,      KC_B    MAGIC, KC_U,    KC_O,   KC_QUOT
+//    HM_S, HM_T, HM_R,    HM_D,    KC_Y,      KC_F    HM_N,  HM_E,    HM_A,   HM_I
+//    KC_X, KC_K, KC_J,    KC_G,    KC_W,      KC_Z    KC_H,  KC_COMM, KC_DOT, KC_UNDS
+//                         NAV_SPC, OS_MEH,    REPEAT, OS_LSFT
 
-// Horizontal Combos
-COMB( combo_canel,   CANCEL,     KC_S, KC_I)
-COMB( CMB_BOOT,      QK_BOOT,    KC_V, KC_QUOT)
-COMB( COMBO_Q,          KC_Q,       KC_V, KC_M)
-COMB( combo_enter,     KC_ENTER,    HM_N,  HM_E,    HM_A)
-COMB( COMBO_ESC,       ESC_SYM,      HM_R,  HM_D)
-COMB( combo_tab,       KC_TAB,      HM_T,  HM_R, HM_D)
-COMB( COMBO_COLON,     CLN_NUM,    HM_N,  HM_E)
-COMB( COMBO_SCOLON,    KC_SCLN,     HM_N,  KC_COMM)
+COMB( combo_canel,      CANCEL,         HM_S, HM_I)
+COMB( cCMB_CANCEL2,     CANCEL,         NAV_SPC, OS_LSFT)
 
+COMB( CMB_BOOT,         QK_BOOT,        KC_V, KC_QUOT)
+COMB( COMBO_Q,          KC_Q,           KC_V, KC_M)
+COMB( combo_enter,      KC_ENTER,       HM_N, HM_E, HM_A)
+COMB( COMBO_ESC,        ESC_SYM,        HM_R, HM_D)
+COMB( combo_tab,        KC_TAB,         HM_T, HM_R, HM_D)
+COMB( COMBO_COLON,      CLN_NUM,        HM_N, HM_E)
+COMB( COMBO_SCOLON,     KC_SCLN,        HM_N, KC_COMM)
 
 COMB( COMBO_LT,         KC_LT,     KC_M, KC_L)
 COMB( COMBO_GT,         KC_GT,     KC_L, KC_C)
