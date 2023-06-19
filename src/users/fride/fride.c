@@ -314,6 +314,7 @@ bool tap_hold(uint16_t keycode) {
       case KC_LCBR:
       case KC_LEFT:
       case KC_EXLM:
+      case KC_DQUO:
       case KC_LT:
       case KC_UP:
       case KC_DOWN:
@@ -335,6 +336,12 @@ void tap_hold_send_tap(uint16_t keycode) {
 }
 void tap_hold_send_hold(uint16_t keycode) {
     switch (keycode) {
+      case KC_QUOT:
+        SEND_STRING("''" SS_TAP(X_LEFT));
+        break;
+      case KC_DQUO:
+        SEND_STRING("\"\"" SS_TAP(X_LEFT));
+        break;
       case CPYPASTE:
         tap_code16(G(KC_V));
         break;
