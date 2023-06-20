@@ -2,7 +2,6 @@
 #include "features/custom_shift_keys.h"
 #include "features/layermodes.h"
 #include "features/nshot_mod.h"
-// #include "features/repeat_key.h"
 #include "features/swapper.h"
 #include "features/tap_hold.h"
 #include "features/achordion.h"
@@ -38,22 +37,50 @@ bool wap_app_cancel(uint16_t keycode) {
 }
 
 uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
- if ((mods & ~MOD_MASK_SHIFT) == 0) {
+  if ((mods & ~MOD_MASK_SHIFT) == 0) {
     switch (keycode) {
-      case HM_S:
-        return KC_C;
       case HM_A:
+        return KC_O;
+      case KC_B:
+        return KC_N;  // TODO BEFORE
+      case KC_C: // C
+        return KC_Y;
+      case HM_D:
+        return KC_Y;
+      case HM_E:
         return KC_U;
-      case KC_W:
-        return KC_S;
-      case KC_L:
+      case KC_F:
         return KC_N;
-      case KC_P:
-        return KC_H;
+      case HM_N:
+        return KC_F;  // Fuenf!
+      case KC_G:
+        return KC_Y;
       case HM_I:
         return MG_ION;
-      case KC_F:
-        return KC_T;
+      case KC_J:
+        return MG_UST;
+      case KC_K:
+        return KC_S;
+      case KC_L:
+        return KC_K;
+      case KC_M:
+        return KC_T; // AMT and co in Germann ;)
+      case KC_O:
+        return KC_A;
+      case KC_P:
+        return KC_Y;
+      case HM_R:
+        return KC_L;
+      case HM_S:
+        return KC_K;
+      case HM_T:
+        return KC_M; //ment does not work that well with german
+      case KC_U:
+        return KC_E;
+      case KC_V:
+        return MG_VER;
+      case KC_Y:
+        return KC_P;
       case KC_EQL:
         return KC_GT;
       case KC_LPRN:
@@ -97,10 +124,6 @@ bool get_repeat_key_eligible_user(uint16_t keycode, keyrecord_t *record,
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {  
   if (!process_achordion(keycode, record)) { return false; }
-  // if (!process_repeat_key_with_alt(keycode, record, REPEAT, ALTREP)) {
-  //   return false;
-  // }
-  
   process_num_word(keycode, record);
   sym_mode_process(keycode, record);
 
@@ -151,7 +174,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
        }       
     }
   
-    switch (keycode) {          
+    switch (keycode) {      
+      case LPAREN:
+        if (record->event.pressed) {
+          if (shifted) {tap_code16(KC_LT);}
+          else {tap_code16(KC_LPRN);}
+          return false;
+        }
+      case RPAREN:
+        if (record->event.pressed) {
+          if (shifted) {tap_code16(KC_GT);}
+          else {tap_code16(KC_LPRN);}
+          return false;
+        }
       case ALFRED:
         if (record->event.pressed) {
             SEND_STRING( SS_DOWN(X_LALT) SS_TAP(X_SPACE) SS_UP(X_LALT));
@@ -181,14 +216,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       case SYMWORD:
         process_sym_word_activation(record);
         return false;
-      // case MAGIC: {
-      //   if (record->tap.count > 0) {
-      //     tap_code16(ALTREP);
-      //     return false;
-      //   } else {
-      //     return true;
-      //   }         
-      // }    
       case CLN_NUM: {
         if (record->event.pressed && record->tap.count > 0) {
           tap_code16(KC_COLON);
@@ -274,7 +301,6 @@ bool tap_hold(uint16_t keycode) {
       case KC_LCBR:
       case KC_LEFT:
       case KC_EXLM:
-      case KC_DQUO:
       case KC_LT:
       case KC_UP:
       case KC_DOWN:
@@ -296,12 +322,6 @@ void tap_hold_send_tap(uint16_t keycode) {
 }
 void tap_hold_send_hold(uint16_t keycode) {
     switch (keycode) {
-      case KC_QUOT:
-        SEND_STRING("''" SS_TAP(X_LEFT));
-        break;
-      case KC_DQUO:
-        SEND_STRING("\"\"" SS_TAP(X_LEFT));
-        break;
       case CPYPASTE:
         tap_code16(G(KC_V));
         break;
