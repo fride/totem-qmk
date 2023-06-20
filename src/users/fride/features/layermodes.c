@@ -54,7 +54,6 @@ void process_num_word(uint16_t keycode, const keyrecord_t *record) {
       case KC_F18:
       case KC_F19:
       case KC_ENT:
-      case REPEAT:
       case KC_MEH:
       case KC_UNDS:
       case KC_BSPC:

@@ -13,19 +13,12 @@ enum layers {
 
 enum custom_keycodes {
   QUOTE = SAFE_RANGE,
-  REPEAT,
-  ALTREP,
   LEADER,
   LLOCK,
   CIRC,
   GRV,
   TILD,
   DELIM, // on the NUM word layer
-
-
-  LPAREN,
-  RPAREN,
-
 
   // Smart caps lock and layers that turn off on certain keys
   CAPSWORD,
@@ -104,7 +97,7 @@ enum custom_keycodes {
 
 
 // special keys
-#define MAGIC ALTREP
+#define MAGIC QK_ALT_REPEAT_KEY
 #define REPEAT_SYM LT(SYM, REPEAT)
 #define NAV_SPC LT(NAV, KC_SPC)
 #define ESC_SYM LT(SYM, KC_ESC)
@@ -114,14 +107,24 @@ enum custom_keycodes {
 #define OS_MEH OSM(MOD_MEH) 
 
 // Mod tap macros
-#define HM_R LSFT_T(KC_R)
-#define HM_S LCTL_T(KC_S)
-#define HM_T LALT_T(KC_T)
-#define HM_H LGUI_T(KC_H)
-#define HM_N RGUI_T(KC_N)
-#define HM_A RALT_T(KC_A)
-#define HM_I LCTL_T(KC_I)
-#define HM_O RSFT_T(KC_O)
+// #define HM_R LSFT_T(KC_R)
+// #define HM_S LCTL_T(KC_S)
+// #define HM_T LALT_T(KC_T)
+// #define HM_H LGUI_T(KC_H)
+// #define HM_N RGUI_T(KC_N)
+// #define HM_A RALT_T(KC_A)
+// #define HM_I LCTL_T(KC_I)
+// #define HM_O RSFT_T(KC_O)
+
+#define HM_R KC_R
+#define HM_S KC_S
+#define HM_T KC_T
+#define HM_H KC_H
+#define HM_N KC_N
+#define HM_A KC_A
+#define HM_I KC_I
+#define HM_O KC_O
+
 // does not work with the totem ;)
 // #define HRML(k1, k2, k3, k4) LT(SYM,k1), LCTL_T(k2), LALT_T(k3), LGUI_T(k4)
 // #define HRMR(k1, k2, k3, k4) RGUI_T(k1), RALT_T(k2), LCTL_T(k3), LT(SYM, k4)
@@ -154,24 +157,24 @@ r s t h k  x n a i o
 */
 // clang-format off
 #define _BASE \
-	KC_V,    KC_W,    KC_F,    KC_P,    KC_B,        KC_J,    KC_L,    KC_U,    KC_Y,    KC_QUOT,   \
-	HM_R,    HM_S,    HM_T,    HM_H,    KC_K,        KC_X,    HM_N,    HM_A,    HM_I,    HM_O,    \
-	KC_NO,   KC_C,    KC_G,    KC_D,    KC_NO,       KC_NO,   KC_M,    KC_COMM,  KC_DOT,  KC_NO,  \
-	                           NAV_SPC, OS_MEH,      OSL(NUM),   LT(NUM,KC_E)
+	KC_V,    KC_W,    KC_F,    KC_P,    KC_B,        KC_SLSH, KC_X,   KC_COMM, KC_DOT, KC_QUOT,   \
+	HM_R,    HM_S,    HM_T,    HM_H,    KC_K,        KC_M,    HM_N,    HM_A,    HM_I,   HM_O,    \
+	KC_NO,   KC_C,    KC_G,    KC_D,    KC_NO,       KC_NO,   KC_L,    KC_U,    KC_Y,   KC_NO,  \
+	                           NAV_SPC, OS_MEH,      MAGIC,   KC_E
 
 // clang-format off
 #define _NAV \
 	SW_APP,  KC_ESC,  TAB_L,   TAB_R,   _______,     _______, KC_BSPC, KC_UP,   KC_DEL,  KC_Q,     \
 	OS_LSFT, OS_LCTL, OS_LALT, OS_LGUI, OS_MEH,      FWD,     KC_LEFT, KC_DOWN, KC_RIGHT,BACK,     \
 	_______, _______, _______, CPYPASTE,ALFRED,      _______, _______, _______, _______, _______,  \
-	                           NAV_SPC, OS_MEH,      REPEAT,  OS_LSFT
+	                           NAV_SPC, OS_MEH,      MAGIC,  OS_LSFT
 
 // clang-format off
 #define _NUM \
 	KC_EXLM, KC_AT,   _______, _______, _______,      _______, KC_HASH,KC_AMPR, _______,  _______,   \
 	KC_7,    FIVE,    THREE,   ONE,     KC_PLUS,      KC_PAST, ZERO,   TWO,     FOUR,     KC_6,   \
 	_______, _______, KC_HASH, KC_9,    KC_PERC,      KC_CIRC, KC_8,   KC_COMM, KC_DOT,   KC_UNDS, \
-	                           NAV_SPC, OS_MEH,       REPEAT,  OS_LSFT
+	                           NAV_SPC, OS_MEH,       MAGIC,  OS_LSFT
 
 
 // clang-format off
@@ -179,7 +182,7 @@ r s t h k  x n a i o
 	  KC_TILD, KC_PLUS, KC_ASTR, KC_EXLM, KC_NO,     KC_NO,   KC_HASH, KC_AT,   KC_CIRC, KC_NO, \
       KC_PIPE, KC_LCBR, KC_RCBR, KC_MINS, KC_PIPE,   KC_GRV,  KC_QUES, KC_LBRC, KC_RBRC, KC_NO, \
       KC_NO,   KC_LT,   KC_GT,   KC_PERC, KC_NO,     KC_SLSH, KC_AMPR, KC_LPRN, KC_RPRN, KC_UNDS, \
-	                           NAV_SPC, OS_MEH,      REPEAT,  OS_LSFT
+	                           NAV_SPC, OS_MEH,      MAGIC,  OS_LSFT
 
 
 #define LAYOUT_FERRIS(...) LAYOUT(__VA_ARGS__) 

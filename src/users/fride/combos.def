@@ -5,13 +5,16 @@
 //                         NAV_SPC, OS_MEH,    REPEAT, OS_LSFT
 
 
-COMB( COMBO_Q,          KC_Q,           KC_V, KC_W)
+COMB( COMBO_Q,          KC_Q,           KC_C, KC_D)
 COMB( COMBO_Z,          KC_Z,           KC_C, KC_G)
 COMB( COMBO_J,          KC_J,           KC_W, KC_F)
+COMB( COMBO_X,          KC_X,           KC_W, KC_V)
 
 COMB( combo_canel,      CANCEL,         HM_R, HM_O)
 
 COMB( CMB_BOOT,         QK_BOOT,        KC_V, KC_QUOT)
+
+COMB( COMBO_NUMWORD,    NUMWORD,        NAV_SPC, KC_E)
 
 COMB( combo_enter,      KC_ENTER,       HM_N, HM_A, HM_I)
 COMB( COMBO_ESC,        ESC_SYM,        HM_T, HM_H)
@@ -21,3 +24,18 @@ COMB( COMBO_COLON,      CLN_NUM,        HM_N, HM_A)
 
 COMB( COMBO_LSFT,      OS_LSFT,        HM_S, HM_T)
 COMB( COMBO_RSFT,      OS_LSFT,        HM_A, HM_I)
+
+// parans
+
+
+COMB( COMBO_LBRC,      KC_LBRC,        KC_W, HM_S)
+COMB( COMBO_LPRN,      KC_LPRN,        KC_F, HM_T)
+COMB( COMBO_LCBR,      KC_LCBR,        KC_P, HM_H)
+COMB( COMBO_LT,        KC_LT,          KC_B, KC_K)
+
+COMB( COMBO_GT,        KC_LT,          KC_J,    KC_X)
+COMB( COMBO_RCBR,      KC_RCBR,        KC_M,    HM_N)
+COMB( COMBO_RPRN,      KC_RPRN,        KC_COMM, HM_A)
+COMB( COMBO_RBRC,      KC_RBRC,        KC_DOT,  HM_I)
+
+

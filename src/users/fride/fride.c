@@ -38,73 +38,45 @@ bool wap_app_cancel(uint16_t keycode) {
 }
 
 uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
-//  if ((mods & ~MOD_MASK_SHIFT) == 0) {
-//     switch (keycode) {
-//       case HM_A:
-//         return KC_O;
-//       case KC_B:
-//         return KC_N;  // TODO BEFORE
-//       case KC_C: // C
-//         return KC_Y;
-//       case HM_D:
-//         return KC_Y;
-//       case HM_E:
-//         return KC_U;
-//       case KC_F:
-//         return KC_N;
-//       case HM_N:
-//         return KC_F;  // Fuenf!
-//       case KC_G:
-//         return KC_Y;
-//       case HM_I:
-//         return MG_ION;
-//       case KC_J:
-//         return MG_UST;
-//       case KC_K:
-//         return KC_S;
-//       case KC_L:
-//         return KC_K;
-//       case KC_M:
-//         return KC_T; // AMT and co in Germann ;)
-//       case KC_O:
-//         return KC_A;
-//       case KC_P:
-//         return KC_Y;
-//       case HM_R:
-//         return KC_L;
-//       case HM_S:
-//         return KC_K;
-//       case HM_T:
-//         return KC_M; //ment does not work that well with german
-//       case KC_U:
-//         return KC_E;
-//       case KC_V:
-//         return MG_VER;
-//       case KC_Y:
-//         return KC_P;
-//       case KC_EQL:
-//         return KC_GT;
-//       case KC_LPRN:
-//         return KC_RPRN;
-//       case KC_MINS:
-//         return KC_GT;
-// //case NAV_SPC:
-// //        return MG_THE;
-//       case KC_ESC:
-//         return KC_COLON;
-//       case KC_1 ... KC_0:
-//         return KC_DOT;
-//       default:
-//         return KC_N;
-  //   }
-  // } else if ((mods & MOD_MASK_CTRL)) {
-  //   switch (keycode) {
-  //     case KC_A:  // Ctrl+A -> Ctrl+K
-  //       return C(KC_C);
-  //     case KC_C:  // Ctrl+C -> Ctrl+C
-  //       return C(KC_C);
-  //   }
-  // }
+ if ((mods & ~MOD_MASK_SHIFT) == 0) {
+    switch (keycode) {
+      case HM_S:
+        return KC_C;
+      case HM_A:
+        return KC_U;
+      case KC_W:
+        return KC_S;
+      case KC_L:
+        return KC_N;
+      case KC_P:
+        return KC_H;
+      case HM_I:
+        return MG_ION;
+      case KC_F:
+        return KC_T;
+      case KC_EQL:
+        return KC_GT;
+      case KC_LPRN:
+        return KC_RPRN;
+      case KC_MINS:
+        return KC_GT;
+//case NAV_SPC:
+//        return MG_THE;
+      case KC_ESC:
+        return KC_COLON;
+      case KC_1 ... KC_0:
+        return KC_DOT;
+      default:
+        return KC_N;
+    }
+  } else if ((mods & MOD_MASK_CTRL)) {
+    switch (keycode) {
+      case KC_A:  // Ctrl+A -> Ctrl+K
+        return C(KC_C);
+      case KC_C:  // Ctrl+C -> Ctrl+C
+        return C(KC_C);
+    }
+  }
   return KC_TRNS;
 }
 
@@ -179,19 +151,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
        }       
     }
   
-    switch (keycode) {      
-      case LPAREN:
-        if (record->event.pressed) {
-          if (shifted) {tap_code16(KC_LT);}
-          else {tap_code16(KC_LPRN);}
-          return false;
-        }
-      case RPAREN:
-        if (record->event.pressed) {
-          if (shifted) {tap_code16(KC_GT);}
-          else {tap_code16(KC_LPRN);}
-          return false;
-        }
+    switch (keycode) {          
       case ALFRED:
         if (record->event.pressed) {
             SEND_STRING( SS_DOWN(X_LALT) SS_TAP(X_SPACE) SS_UP(X_LALT));
@@ -221,14 +181,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       case SYMWORD:
         process_sym_word_activation(record);
         return false;
-      case MAGIC: {
-        if (record->tap.count > 0) {
-          tap_code16(ALTREP);
-          return false;
-        } else {
-          return true;
-        }         
-      }    
+      // case MAGIC: {
+      //   if (record->tap.count > 0) {
+      //     tap_code16(ALTREP);
+      //     return false;
+      //   } else {
+      //     return true;
+      //   }         
+      // }    
       case CLN_NUM: {
         if (record->event.pressed && record->tap.count > 0) {
           tap_code16(KC_COLON);
