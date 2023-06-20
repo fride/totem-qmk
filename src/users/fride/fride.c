@@ -2,7 +2,7 @@
 #include "features/custom_shift_keys.h"
 #include "features/layermodes.h"
 #include "features/nshot_mod.h"
-#include "features/repeat_key.h"
+// #include "features/repeat_key.h"
 #include "features/swapper.h"
 #include "features/tap_hold.h"
 #include "features/achordion.h"
@@ -38,73 +38,73 @@ bool wap_app_cancel(uint16_t keycode) {
 }
 
 uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
-  if ((mods & ~MOD_MASK_SHIFT) == 0) {
-    switch (keycode) {
-      case HM_A:
-        return KC_O;
-      case KC_B:
-        return KC_N;  // TODO BEFORE
-      case KC_C: // C
-        return KC_Y;
-      case HM_D:
-        return KC_Y;
-      case HM_E:
-        return KC_U;
-      case KC_F:
-        return KC_N;
-      case HM_N:
-        return KC_F;  // Fuenf!
-      case KC_G:
-        return KC_Y;
-      case HM_I:
-        return MG_ION;
-      case KC_J:
-        return MG_UST;
-      case KC_K:
-        return KC_S;
-      case KC_L:
-        return KC_K;
-      case KC_M:
-        return KC_T; // AMT and co in Germann ;)
-      case KC_O:
-        return KC_A;
-      case KC_P:
-        return KC_Y;
-      case HM_R:
-        return KC_L;
-      case HM_S:
-        return KC_K;
-      case HM_T:
-        return KC_M; //ment does not work that well with german
-      case KC_U:
-        return KC_E;
-      case KC_V:
-        return MG_VER;
-      case KC_Y:
-        return KC_P;
-      case KC_EQL:
-        return KC_GT;
-      case KC_LPRN:
-        return KC_RPRN;
-      case KC_MINS:
-        return KC_GT;
-//case NAV_SPC:
-//        return MG_THE;
-      case KC_ESC:
-        return KC_COLON;
-      case KC_1 ... KC_0:
-        return KC_DOT;
-      default:
-        return KC_N;
-    }
-  } else if ((mods & MOD_MASK_CTRL)) {
-    switch (keycode) {
-      case KC_A:  // Ctrl+A -> Ctrl+K
-        return C(KC_C);
-      case KC_C:  // Ctrl+C -> Ctrl+C
-        return C(KC_C);
-    }
-  }
+//  if ((mods & ~MOD_MASK_SHIFT) == 0) {
+//     switch (keycode) {
+//       case HM_A:
+//         return KC_O;
+//       case KC_B:
+//         return KC_N;  // TODO BEFORE
+//       case KC_C: // C
+//         return KC_Y;
+//       case HM_D:
+//         return KC_Y;
+//       case HM_E:
+//         return KC_U;
+//       case KC_F:
+//         return KC_N;
+//       case HM_N:
+//         return KC_F;  // Fuenf!
+//       case KC_G:
+//         return KC_Y;
+//       case HM_I:
+//         return MG_ION;
+//       case KC_J:
+//         return MG_UST;
+//       case KC_K:
+//         return KC_S;
+//       case KC_L:
+//         return KC_K;
+//       case KC_M:
+//         return KC_T; // AMT and co in Germann ;)
+//       case KC_O:
+//         return KC_A;
+//       case KC_P:
+//         return KC_Y;
+//       case HM_R:
+//         return KC_L;
+//       case HM_S:
+//         return KC_K;
+//       case HM_T:
+//         return KC_M; //ment does not work that well with german
+//       case KC_U:
+//         return KC_E;
+//       case KC_V:
+//         return MG_VER;
+//       case KC_Y:
+//         return KC_P;
+//       case KC_EQL:
+//         return KC_GT;
+//       case KC_LPRN:
+//         return KC_RPRN;
+//       case KC_MINS:
+//         return KC_GT;
+// //case NAV_SPC:
+// //        return MG_THE;
+//       case KC_ESC:
+//         return KC_COLON;
+//       case KC_1 ... KC_0:
+//         return KC_DOT;
+//       default:
+//         return KC_N;
+  //   }
+  // } else if ((mods & MOD_MASK_CTRL)) {
+  //   switch (keycode) {
+  //     case KC_A:  // Ctrl+A -> Ctrl+K
+  //       return C(KC_C);
+  //     case KC_C:  // Ctrl+C -> Ctrl+C
+  //       return C(KC_C);
+  //   }
+  // }
   return KC_TRNS;
 }
 
@@ -125,9 +125,9 @@ bool get_repeat_key_eligible_user(uint16_t keycode, keyrecord_t *record,
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {  
   if (!process_achordion(keycode, record)) { return false; }
-  if (!process_repeat_key_with_alt(keycode, record, REPEAT, ALTREP)) {
-    return false;
-  }
+  // if (!process_repeat_key_with_alt(keycode, record, REPEAT, ALTREP)) {
+  //   return false;
+  // }
   
   process_num_word(keycode, record);
   sym_mode_process(keycode, record);

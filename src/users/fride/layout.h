@@ -114,14 +114,14 @@ enum custom_keycodes {
 #define OS_MEH OSM(MOD_MEH) 
 
 // Mod tap macros
-#define HM_S LSFT_T(KC_S)
-#define HM_T LCTL_T(KC_T)
-#define HM_R LALT_T(KC_R)
-#define HM_D LGUI_T(KC_D)
+#define HM_R LSFT_T(KC_R)
+#define HM_S LCTL_T(KC_S)
+#define HM_T LALT_T(KC_T)
+#define HM_H LGUI_T(KC_H)
 #define HM_N RGUI_T(KC_N)
-#define HM_E RALT_T(KC_E)
-#define HM_A LCTL_T(KC_A)
-#define HM_I RSFT_T(KC_I)
+#define HM_A RALT_T(KC_A)
+#define HM_I LCTL_T(KC_I)
+#define HM_O RSFT_T(KC_O)
 // does not work with the totem ;)
 // #define HRML(k1, k2, k3, k4) LT(SYM,k1), LCTL_T(k2), LALT_T(k3), LGUI_T(k4)
 // #define HRMR(k1, k2, k3, k4) RGUI_T(k1), RALT_T(k2), LCTL_T(k3), LT(SYM, k4)
@@ -138,12 +138,26 @@ enum custom_keycodes {
 #define ___________________________________________ _______, _______, _______, _______, _______
 
 
+/*
+ from https://www.reddit.com/r/KeyboardLayouts/comments/14479fa/comment/jnfixxx/?utm_source=share&utm_medium=web2x&context=3
+  _ w m g _  _ . ' j _
+  s c n t k  , a e i h 
+  b p l d _  _ u o y f 
+       r      spc
+
+
+https://github.com/apsu/aptmak
+v w f p b  j l u y '
+r s t h k  x n a i o
+  c g d      m , .
+           e       
+*/
 // clang-format off
 #define _BASE \
-	KC_V,    KC_M,    KC_L,    KC_C,    KC_P,        KC_B,    MAGIC,   KC_U,    KC_O,    KC_QUOT,   \
-	HM_S,    HM_T,    HM_R,    HM_D,    KC_Y,        KC_F,    HM_N,    HM_E,    HM_A,    HM_I,      \
-	KC_X,    KC_K,    KC_J,    KC_G,    KC_W,        KC_Z,    KC_H,    KC_COMM, KC_DOT,  KC_UNDS,   \
-	                           NAV_SPC, OS_MEH,      REPEAT, OS_LSFT
+	KC_V,    KC_W,    KC_F,    KC_P,    KC_B,        KC_J,    KC_L,    KC_U,    KC_Y,    KC_QUOT,   \
+	HM_R,    HM_S,    HM_T,    HM_H,    KC_K,        KC_X,    HM_N,    HM_A,    HM_I,    HM_O,    \
+	KC_NO,   KC_C,    KC_G,    KC_D,    KC_NO,       KC_NO,   KC_M,    KC_COMM,  KC_DOT,  KC_NO,  \
+	                           NAV_SPC, OS_MEH,      OSL(NUM),   LT(NUM,KC_E)
 
 // clang-format off
 #define _NAV \
