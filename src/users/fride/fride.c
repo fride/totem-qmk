@@ -24,6 +24,7 @@ uint8_t NUM_CUSTOM_SHIFT_KEYS =
 // └─────────────────────────────────────────────────┘
 bool sw_app_active = false;
 bool sw_win_active = false;
+
 bool wap_app_cancel(uint16_t keycode) {
   switch (keycode) {
     case KC_TAB:
@@ -174,7 +175,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
        }       
     }
   
-    switch (keycode) {      
+    switch (keycode) {
+        // TODO REPEAT with Layer or Mods test
+        case LT(NUM,REPEAT):
+            if (record->event.pressed && record->tap.count > 0) {
+              tap_code16(KC_AT);
+              tap_code16(REPEAT);
+              return false;
+            }
+            break;
       case LPAREN:
         if (record->event.pressed) {
           if (shifted) {tap_code16(KC_LT);}
@@ -400,6 +409,7 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
   switch (tap_hold_keycode) {
     case KC_X:
+    case NAV_SPC:
     // case HOME_SC:
     // case QHOME_Z:
     //case QHOME_SL:

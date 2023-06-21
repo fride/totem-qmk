@@ -10,6 +10,12 @@ enum layers {
     NAV
 };
 
+// Tap Dance keycodes
+enum td_keycodes {
+    ALT_LP // Our example key: `LALT` when held, `(` when tapped. Add additional keycodes for each tapdance.
+};
+
+
 enum custom_keycodes {
   QUOTE = SAFE_RANGE,
   LEADER,
@@ -141,7 +147,7 @@ enum custom_keycodes {
 	KC_V,    KC_M,    KC_L,    KC_C,    KC_P,        KC_B,    MAGIC,   KC_U,    KC_O,    KC_QUOT,   \
 	HM_S,    HM_T,    HM_R,    HM_D,    KC_Y,        KC_F,    HM_N,    HM_E,    HM_A,    HM_I,      \
 	KC_X,    KC_K,    KC_J,    KC_G,    KC_W,        KC_Z,    KC_H,    KC_COMM, KC_DOT,  KC_UNDS,   \
-	                           NAV_SPC, OS_MEH,      REPEAT, OS_LSFT
+	                           NAV_SPC, OS_MEH,      LT(NUM,REPEAT), OS_LSFT
 
 // clang-format off
 #define _NAV \
