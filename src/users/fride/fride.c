@@ -314,6 +314,7 @@ bool tap_hold(uint16_t keycode) {
       case KC_UP:
       case KC_DOWN:
       case KC_RIGHT:
+      case QU:
       case CPYPASTE:
         return true;
     }
@@ -321,7 +322,10 @@ bool tap_hold(uint16_t keycode) {
 }
 
 void tap_hold_send_tap(uint16_t keycode) {
-    switch (keycode) {      
+    switch (keycode) {
+      case QU:
+        SEND_STRING("qu");
+        break;
       case CPYPASTE:
         tap_code16(G(KC_C));
         break;
@@ -331,6 +335,9 @@ void tap_hold_send_tap(uint16_t keycode) {
 }
 void tap_hold_send_hold(uint16_t keycode) {
     switch (keycode) {
+      case QU:
+        tap_code16(KC_Q);
+        break;
       case CPYPASTE:
         tap_code16(G(KC_V));
         break;
@@ -391,9 +398,10 @@ bool get_combo_must_tap(uint16_t index, combo_t *combo) {
 bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
                      uint16_t other_keycode, keyrecord_t* other_record) {
   // Exceptionally consider the following chords as holds, even though they
-  // are on the same hand in Magic Sturdy.
+  // are on the same hand
   switch (tap_hold_keycode) {
-    case NAV_SPC:
+    case SYM_SPC:
+    case NAV_R:
       return true;
   }
 

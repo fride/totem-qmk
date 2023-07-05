@@ -6,9 +6,10 @@
 
 COMB( combo_canel,      CANCEL,         HM_C, HM_I)
 
-COMB( CMB_BOOT,         QK_BOOT,        KC_W, KC_J)
-COMB( COMBO_Q,          KC_Q,           KC_V, KC_W)
+COMB( CMB_BOOT,         QK_BOOT,        KC_W, KC_Y)
+COMB( COMBO_Q,          QU,           KC_V, KC_W)
 COMB( COMBO_Z,          KC_Z,           KC_V, KC_H)
+COMB( COMBO_X,          KC_X,           KC_F, KC_D)
 // COMB( combo_enter,      KC_ENTER,       HM_N, HM_E, HM_A)
 //  COMBO_ESC,        ESC_SYM,        HM_R, HM_D)
 //  combo_tab,        KC_TAB,         HM_T, HM_R, HM_D)

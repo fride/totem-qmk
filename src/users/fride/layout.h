@@ -159,11 +159,11 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 // clang-format off
 
 #define ______________HANDS_DOWN_L1________________  KC_W,    KC_V,    KC_H,    KC_G,    KC_EQL
-#define ______________HANDS_DOWN_R1________________  KC_SCLN, KC_DOT,  KC_SLSH, KC_DQUO, KC_J
+#define ______________HANDS_DOWN_R1________________  KC_MINS, KC_X,   KC_U,    KC_O,    KC_Y
 #define ______________HANDS_DOWN_L2________________  HM_C,    HM_S,    HM_N,    HM_T,    KC_B
 #define ______________HANDS_DOWN_R2________________  KC_COMM, HM_L,    HM_E,    HM_A,    HM_I
 #define ______________HANDS_DOWN_L3________________  KC_P,    KC_F,    KC_M,    KC_D,    KC_K
-#define ______________HANDS_DOWN_R3________________  KC_MINS, KC_X,   KC_U,    KC_O,    KC_Y
+#define ______________HANDS_DOWN_R3________________  KC_SCLN, KC_DOT,  KC_SLSH, KC_QUOT, KC_J
 
 
 
