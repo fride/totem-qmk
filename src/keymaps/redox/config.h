@@ -39,7 +39,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_VAL_STEP 8
 
 
-#define IGNORE_MOD_TAP_INTERRUPT    // Lets you roll mod-tap keys
 #define TAPPING_FORCE_HOLD          // Allows mod use immediately after tap use
 #define TAPPING_FORCE_HOLD_PER_KEY  // BUT NOT EVERYWHERE.
 #define TAPPING_TERM 200            // Base tapping term

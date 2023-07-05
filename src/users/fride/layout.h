@@ -105,6 +105,8 @@ enum custom_keycodes {
 #define SPACE_L A(G(KC_LEFT))
 #define SPACE_R A(G(KC_RGHT))
 
+#define NAV_R LT(NAV,KC_R)
+#define SYM_SPC LT(SYM,KC_SPC)
 
 // special keys
 #define MAGIC QK_ALT_REPEAT_KEY
@@ -118,11 +120,12 @@ enum custom_keycodes {
 #define OS_MEH OSM(MOD_MEH) 
 
 // Mod tap macros
-#define HM_S LSFT_T(KC_S)
-#define HM_T LCTL_T(KC_T)
-#define HM_R LALT_T(KC_R)
-#define HM_D LGUI_T(KC_D)
-#define HM_N RGUI_T(KC_N)
+#define HM_C LSFT_T(KC_C)
+#define HM_S LCTL_T(KC_S)
+#define HM_N LALT_T(KC_N)
+#define HM_T LGUI_T(KC_T)
+
+#define HM_L RGUI_T(KC_L)
 #define HM_E RALT_T(KC_E)
 #define HM_A LCTL_T(KC_A)
 #define HM_I RSFT_T(KC_I)
@@ -140,6 +143,28 @@ enum custom_keycodes {
 
 #define _______ KC_NO
 #define ___________________________________________ _______, _______, _______, _______, _______
+
+/*
+// https://www.reddit.com/r/KeyboardLayouts/comments/y7jkyj/the_hands_down_ive_been_using_lately/?utm_source=share&utm_medium=web2x&context=3
+https://www.reddit.com/r/ErgoMechKeyboards/comments/13zj6qz/not_enough_keys/
+
+@  $€ &  |  ~    ^  7  8  9  %    (€ is shift+$)
+{  (  )  }  `    +  4  5  6  -    (= is combo +4)
+[  <  >  ]  #    *  1  2  3  /\   (\ is shift+/)
+ctl  sft  alt    _  0  .
+
+This way, ALL symbols + numbers of a traditional board fit on a single layer
+(excl. default layer punctuation)
+*/
+// clang-format off
+
+#define ______________HANDS_DOWN_L1________________  KC_W,    KC_V,    KC_H,    KC_G,    KC_EQL
+#define ______________HANDS_DOWN_R1________________  KC_SCLN, KC_DOT,  KC_SLSH, KC_DQUO, KC_J
+#define ______________HANDS_DOWN_L2________________  HM_C,    HM_S,    HM_N,    HM_T,    KC_B
+#define ______________HANDS_DOWN_R2________________  KC_COMM, HM_L,    HM_E,    HM_A,    HM_I
+#define ______________HANDS_DOWN_L3________________  KC_P,    KC_F,    KC_M,    KC_D,    KC_K
+#define ______________HANDS_DOWN_R3________________  KC_MINS, KC_X,   KC_U,    KC_O,    KC_Y
+
 
 
 // clang-format off

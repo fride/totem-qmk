@@ -12,6 +12,12 @@ My keymap is based mainly on the [magic sturdy](https://github.com/Ikcelaks/keyb
 - https://github.com/getreuer/qmk-keymap
 - https://www.jonashietala.se/blog/2022/08/28/the_t-342_keyboard_layout/
 - https://github.com/possumvibes/keyboard-layout
+<<<<<<< Updated upstream
+=======
+- https://github.com/pixelbreaker/qmk_userspace/blob/main/layout.h
+- https://github.com/SiriusStarr/keyboard-layouts
+- https://github.com/EricGebhart/MyQMK/blob/Main/users/ericgebhart/readme.org
+>>>>>>> Stashed changes
 ![Alt text](aptmak.png)
 
 # Scratchpad!
